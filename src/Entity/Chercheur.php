@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ChercheurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChercheurRepository::class)]
@@ -27,6 +29,14 @@ class Chercheur
 
     #[ORM\Column(length: 50)]
     private ?string $role = null;
+
+    #[ORM\OneToMany(mappedBy: 'chercheur', targetEntity: projectderecherche::class, orphanRemoval: true)]
+    private Collection $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,36 @@ class Chercheur
     public function setRole(string $role): static
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, projectderecherche>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(projectderecherche $project): static
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
+            $project->setChercheur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(projectderecherche $project): static
+    {
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getChercheur() === $this) {
+                $project->setChercheur(null);
+            }
+        }
 
         return $this;
     }

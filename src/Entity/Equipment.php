@@ -19,6 +19,10 @@ class Equipment
     #[ORM\Column]
     private ?bool $etat = null;
 
+    #[ORM\ManyToOne(inversedBy: 'equipments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ProjectDeRecherche $projectDeRecherche = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class Equipment
     public function setEtat(bool $etat): static
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getProjectDeRecherche(): ?ProjectDeRecherche
+    {
+        return $this->projectDeRecherche;
+    }
+
+    public function setProjectDeRecherche(?ProjectDeRecherche $projectDeRecherche): static
+    {
+        $this->projectDeRecherche = $projectDeRecherche;
 
         return $this;
     }

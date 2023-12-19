@@ -22,6 +22,10 @@ class Publication
     #[ORM\Column(length: 50)]
     private ?string $motsCles = null;
 
+    #[ORM\ManyToOne(inversedBy: 'publications')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ProjectDeRecherche $projectDeRecherche = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +63,18 @@ class Publication
     public function setMotsCles(string $motsCles): static
     {
         $this->motsCles = $motsCles;
+
+        return $this;
+    }
+
+    public function getProjectDeRecherche(): ?ProjectDeRecherche
+    {
+        return $this->projectDeRecherche;
+    }
+
+    public function setProjectDeRecherche(?ProjectDeRecherche $projectDeRecherche): static
+    {
+        $this->projectDeRecherche = $projectDeRecherche;
 
         return $this;
     }
