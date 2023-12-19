@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\PublicationRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: PublicationRepository::class)]
+class Publication
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $titre = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $auteurs = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $motsCles = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): static
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getAuteurs(): ?string
+    {
+        return $this->auteurs;
+    }
+
+    public function setAuteurs(string $auteurs): static
+    {
+        $this->auteurs = $auteurs;
+
+        return $this;
+    }
+
+    public function getMotsCles(): ?string
+    {
+        return $this->motsCles;
+    }
+
+    public function setMotsCles(string $motsCles): static
+    {
+        $this->motsCles = $motsCles;
+
+        return $this;
+    }
+}
