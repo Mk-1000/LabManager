@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Chercheur{% endblock %}
+
+{% block body %}
+    <h1>Create new Chercheur</h1>
+
+    {{ include('chercheur/_form.html.twig') }}
+
+    <a href="{{ path('app_chercheur_index') }}">back to list</a>
+{% endblock %}

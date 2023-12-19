@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chercheur{% endblock %}
+
+{% block body %}
+    <h1>Chercheur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chercheur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chercheur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ chercheur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ chercheur.email }}</td>
+            </tr>
+            <tr>
+                <th>MotDePasse</th>
+                <td>{{ chercheur.motDePasse }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ chercheur.role }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chercheur_index') }}">back to list</a>
+
+    <a href="{{ path('app_chercheur_edit', {'id': chercheur.id}) }}">edit</a>
+
+    {{ include('chercheur/_delete_form.html.twig') }}
+{% endblock %}

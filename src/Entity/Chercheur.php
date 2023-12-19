@@ -30,7 +30,7 @@ class Chercheur
     #[ORM\Column(length: 50)]
     private ?string $role = null;
 
-    #[ORM\OneToMany(mappedBy: 'chercheur', targetEntity: projectderecherche::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'chercheur', targetEntity: ProjectDeRecherche::class, orphanRemoval: true)]
     private Collection $projects;
 
     public function __construct()
@@ -104,14 +104,14 @@ class Chercheur
     }
 
     /**
-     * @return Collection<int, projectderecherche>
+     * @return Collection<int, ProjectDeRecherche>
      */
     public function getProjects(): Collection
     {
         return $this->projects;
     }
 
-    public function addProject(projectderecherche $project): static
+    public function addProject(ProjectDeRecherche $project): static
     {
         if (!$this->projects->contains($project)) {
             $this->projects->add($project);
@@ -121,7 +121,7 @@ class Chercheur
         return $this;
     }
 
-    public function removeProject(projectderecherche $project): static
+    public function removeProject(ProjectDeRecherche $project): static
     {
         if ($this->projects->removeElement($project)) {
             // set the owning side to null (unless already changed)

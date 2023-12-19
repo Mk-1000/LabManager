@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjectDeRechercheRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Equipment;
+use App\Entity\Publication;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use App\Repository\ProjectDeRechercheRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ProjectDeRechercheRepository::class)]
 class ProjectDeRecherche
@@ -95,14 +97,14 @@ class ProjectDeRecherche
     }
 
     /**
-     * @return Collection<int, publication>
+     * @return Collection<int, Publication>
      */
     public function getPublications(): Collection
     {
         return $this->publications;
     }
 
-    public function addPublication(publication $publication): static
+    public function addPublication(Publication $publication): static
     {
         if (!$this->publications->contains($publication)) {
             $this->publications->add($publication);
@@ -112,7 +114,7 @@ class ProjectDeRecherche
         return $this;
     }
 
-    public function removePublication(publication $publication): static
+    public function removePublication(Publication $publication): static
     {
         if ($this->publications->removeElement($publication)) {
             // set the owning side to null (unless already changed)
@@ -125,14 +127,14 @@ class ProjectDeRecherche
     }
 
     /**
-     * @return Collection<int, equipment>
+     * @return Collection<int, Equipment>
      */
     public function getEquipments(): Collection
     {
         return $this->equipments;
     }
 
-    public function addEquipment(equipment $equipment): static
+    public function addEquipment(Equipment $equipment): static
     {
         if (!$this->equipments->contains($equipment)) {
             $this->equipments->add($equipment);
@@ -142,7 +144,7 @@ class ProjectDeRecherche
         return $this;
     }
 
-    public function removeEquipment(equipment $equipment): static
+    public function removeEquipment(Equipment $equipment): static
     {
         if ($this->equipments->removeElement($equipment)) {
             // set the owning side to null (unless already changed)

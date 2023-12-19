@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Chercheur{% endblock %}
+
+{% block body %}
+    <h1>Edit Chercheur</h1>
+
+    {{ include('chercheur/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_chercheur_index') }}">back to list</a>
+
+    {{ include('chercheur/_delete_form.html.twig') }}
+{% endblock %}

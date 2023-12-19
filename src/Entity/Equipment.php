@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\EquipmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ProjectDeRecherche;
+use App\Repository\EquipmentRepository;
 
 #[ORM\Entity(repositoryClass: EquipmentRepository::class)]
 class Equipment

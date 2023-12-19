@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chercheur index{% endblock %}
+
+{% block body %}
+    <h1>Chercheur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>MotDePasse</th>
+                <th>Role</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chercheur in chercheurs %}
+            <tr>
+                <td>{{ chercheur.id }}</td>
+                <td>{{ chercheur.nom }}</td>
+                <td>{{ chercheur.prenom }}</td>
+                <td>{{ chercheur.email }}</td>
+                <td>{{ chercheur.motDePasse }}</td>
+                <td>{{ chercheur.role }}</td>
+                <td>
+                    <a href="{{ path('app_chercheur_show', {'id': chercheur.id}) }}">show</a>
+                    <a href="{{ path('app_chercheur_edit', {'id': chercheur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chercheur_new') }}">Create new</a>
+{% endblock %}

@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ProjectDeRecherche;
+use App\Repository\PublicationRepository;
 
 #[ORM\Entity(repositoryClass: PublicationRepository::class)]
 class Publication
