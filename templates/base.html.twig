@@ -1,27 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-            <title>{% block title %}Welcome!{% endblock %}</title>
-            <link rel="icon"
-                href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-            {{ ux_controller_link_tags() }} 
-                <link href="{{asset('bootstrap/css/bootstrap.min.css')}}"
-                    rel="stylesheet">
-                <link href="{{asset('css/base.css')}}" />
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{% block stylesheets %}
+			{{ ux_controller_link_tags() }}
+			<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+			{% block addSstylesheets %}{% endblock %}
+			<style>
+            body{
+    background-color: rgb(232, 245, 233);;
+}
+				.logo {
+					width: 100px;
+					height: auto;
+				}
 
-        {% block javascripts %}
-{# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
-        
-        {% endblock %}
-                </head>
-                <body>
-                {% block nav %}
-                {% endblock %}  
-        {% block body %}
-        
-        {% endblock %}  
-                </body>
-            </html>
+				.links {
+					justify-content: center;
+				}
+
+				.nav-edit {
+					width: 100%;
+					height: 60px;
+					left: 0;
+					top: 0;
+
+					margin-bottom: 20px; /* An absolute length */
+
+					background: #FFFFFF;
+
+					box-shadow: 0 8px 16px rgba(171, 190, 209, 0.4);
+
+				}
+				/* Style for list items */
+				.nav-item a {
+					font-family: 'Inter';
+					font-style: normal;
+					font-weight: 500;
+					font-size: 16px;
+					line-height: 24px;
+					color: var(--Neutral-D_Grey, #4D4D4D);
+					text-decoration: none; /* To remove default underline */
+				}
+
+				/* Active link style */
+				.nav-item.active a {
+					color: green;
+				}
+
+				/* Hover effect for links */
+				.nav-item a:hover {
+					color: green;
+				}
+				.spacer {
+					height: 20px; /* Adjust as needed */
+				}
+			</style>
+		{% endblock %}
+		{% block javascripts %}
+		{# {% block importmap %}{{ importmap('app') }}{% endblock %} #}{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			{% block nav %}
+				<nav class="nav-edit navbar navbar-expand-lg bg-body-tertiary">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="#"><img class="logo" src="{{asset('images/svgviewer-png-output.png')}}"></a>
+
+						<div class="links collapse navbar-collapse" id="navbarNav">
+							<ul class="navbar-nav">
+								<li class="nav-item{% if app.request.attributes.get('_route') == 'app_publication_index' %} active{% endif %}">
+									<a class="nav-link" href="{{ path('app_publication_index') }}">Publication</a>
+								</li>
+								<li class="nav-item{% if app.request.attributes.get('_route') == 'app_project_de_recherche_index' %} active{% endif %}">
+									<a class="nav-link" href="{{ path('app_project_de_recherche_index') }}">Projects</a>
+								</li>
+								<li class="nav-item{% if app.request.attributes.get('_route') == 'app_equipment_index' %} active{% endif %}">
+									<a class="nav-link" href="{{ path('app_equipment_index') }}">Equipment</a>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<button class="btn btn-outline-success" type="submit">Search</button>
+						</div>
+					</div>
+				</nav>
+				<div class="spacer"></div>
+			{% endblock %}
+			{% block content %}{% endblock %}
+
+		{% endblock %}
+	</body>
+</html>
