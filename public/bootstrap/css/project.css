@@ -7,7 +7,9 @@
             align-items: center; /* Center items vertically */
             margin: 0 auto; /* Center the container horizontally */
         }
-
+        a {
+            text-decoration: none !important;
+        }
         /* Styles for the search input */
         .search-container {
 

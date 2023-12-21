@@ -35,6 +35,8 @@
 
 		{% for project_de_recherche in project_de_recherches %}
 		  {% if id ==  project_de_recherche.chercheur.getId()%}
+      	<a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">
+
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <div class="title-content">
@@ -57,12 +59,11 @@
             </div>
           </div>
         </div>
+        </a>
 		  {% endif %}
 		{% else %}
 			<h1>no records found</h1>
 		{% endfor %}
-
-		<!-- ... rest of the HTML ... -->
 
 	</div>
 
