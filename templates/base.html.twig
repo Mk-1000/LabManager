@@ -43,9 +43,16 @@
 							</ul>
 						</div>
 
-						<div>
-							<button class="btn btn-outline-success" type="submit">H</button>
-						</div>
+					<div>
+						{% set nom = app.session.get('currentUserNom') %}
+
+						{% if nom is defined %}
+							<a href="{{ path('app_equipment_index') }}" class="btn btn-outline-success">{{ nom|slice(0, 1) }}</a>
+						{% else %}
+							<a href="{{ path('app_homepage') }}" class="btn btn-outline-success">Sign IN</a>
+						{% endif %}
+					</div>
+
 						
 					</div>
 				</nav>

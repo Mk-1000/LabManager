@@ -196,6 +196,11 @@
             /* Set the text color */
         }
 
+        a {
+            text-decoration: none !important;
+        }
+        
+
         .card .description-content .mot-cles {
             display: flex;
             justify-content: center;
@@ -211,3 +216,4 @@
         .card:active .title-content i {
             color: white;
         }
+

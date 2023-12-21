@@ -8,109 +8,141 @@
 {% endblock %}
 
 {% block content %}
-	<div id="search1" class="containerOfSearch">
-		<div class="search-container">
-			<i class="search-icon bi bi-search"></i>
-			<input id="searchPublication" type="text" class="form-control" placeholder="Search">
+
+	{# Retrieve session variables in Twig #}
+	{% set id = app.session.get('currentUserId') %}
+
+	{# Display the values if they exist #}
+	{% if id is defined %}
+		{# <p>id: {{ id }}</p> #}
+
+
+		<div id="search1" class="containerOfSearch">
+			<div class="search-container">
+				<i class="search-icon bi bi-search"></i>
+				<input id="searchPublication" type="text" class="form-control" placeholder="Search">
+			</div>
+			<div class="select-container">
+				<select>
+					<option value="option1">Tous</option>
+					<option value="option2">Titre</option>
+					<option value="option2">Auteur</option>
+					<option value="option2">Mots-clés</option>
+				</select>
+			</div>
+
+			<div class="button-container">
+				<a href="{{ path('app_publication_new') }}">
+					<button type="button">
+						<i class="bi bi-plus"></i>
+					</button>
+				</a>
+			</div>
+
+
 		</div>
-		<div class="select-container">
-			<select>
-				<option value="option1">Tous</option>
-				<option value="option2">Titre</option>
-				<option value="option2">Auteur</option>
-				<option value="option2">Mots-clés</option>
-			</select>
-		</div>
-		<div class="button-container">
-			<button type="button">
-				<i class="bi bi-plus"></i>
-			</button>
-		</div>
-	</div>
 
-	<!-- Pagination Container -->
-	<!-- Pagination Container -->
-<div class="pagination-container">
-    <!-- Publications Display -->
-    <div class="publications">
-        {% for publication in publications %}
-            <div class="card">
+		<!-- Pagination Container -->
+		<!-- Pagination Container -->
+		<div
+			class="pagination-container">
+			<!-- Publications Display -->
+			<div class="publications">
+				{% for publication in publications %}
+					<div class="card">
 
-                <div class="title-content">
-                    <h6>{{ publication.id }}</h6>
-                    <i class="bi bi-chevron-right"></i>
-                </div>
+						{% if id ==  publication.projectDeRecherche.chercheur.getId()%}
+							<a href="{{ path('app_publication_edit', {'id': publication.id}) }}">
 
-				<div class="description-content">
+							{% else %}
+								<a href="{{ path('app_publication_show', {'id': publication.id}) }}">
 
-					<div class="auteur">
-						<p>Auteur: {{ publication.auteurs }}</p>
-					</div>
+								{% endif %}
 
-					<div class="titre-projet">
-						<p>Projet: {{ publication.projectDeRecherche.getTitre() }}</p>
-					</div>
+								<div class="title-content">
+									<h6>{{ publication.id }}</h6>
+									{% if id ==  publication.projectDeRecherche.chercheur.getId()%}
+										<i class="bi bi-pencil-square"></i>
+									{% else %}
+										<i class="bi bi-chevron-right"></i>
+									{% endif %}
+								</div>
 
-					<div class="mot-cles">
-						<p class="p1">{{ publication.motsCles }}</p>
-					</div>
+								<div class="description-content">
 
+									<div class="auteur">
+										<p>Auteur:
+											{{ publication.auteurs }}</p>
+									</div>
+
+									<div class="titre-projet">
+										<p>Projet:
+											{{ publication.projectDeRecherche.getTitre() }}</p>
+									</div>
+
+									<div class="mot-cles">
+										<p class="p1">{{ publication.motsCles }}</p>
+									</div>
+
+								</div>
+							</a>
+
+						</div>
+					{% endfor %}
 				</div>
 
-            </div>
-        {% endfor %}
-    </div>
-
-    <!-- Pagination Controls -->
-    <div class="pagination-controls">
-        <!-- Your pagination controls will go here -->
-    </div>
-</div>
-
+				<!-- Pagination Controls -->
+				<div
+					class="pagination-controls"><!-- Your pagination controls will go here -->
+				</div>
+			</div>
+		{% else %}
+			<h4 colspan="5">no records found</h4>
+		{% endif %}
 
 
-	{# <td>{{ publication.id }}</td>
-									                <td>{{ publication.titre }}</td>
-									                <td>{{ publication.auteurs }}</td>
-									                <td>{{ publication.motsCles }}</td>
-									                <td>
-									                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
-									                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
-									                </td> #}
+		{# <td>{{ publication.id }}</td>
+															                <td>{{ publication.titre }}</td>
+															                <td>{{ publication.auteurs }}</td>
+															                <td>{{ publication.motsCles }}</td>
+															                <td>
+															                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
+															                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
+															                </td> #}
 
 
-{# <h1>Publication index</h1> #}
+	{# <h1>Publication index</h1> #}
 
-	{# <table class="table">
-								        <thead>
-								            <tr>
-								                <th>Id</th>
-								                <th>Titre</th>
-								                <th>Auteurs</th>
-								                <th>MotsCles</th>
-								                <th>actions</th>
-								            </tr>
-								        </thead>
-								        <tbody>
-								        {% for publication in publications %}
-								            <tr>
-								                <td>{{ publication.id }}</td>
-								                <td>{{ publication.titre }}</td>
-								                <td>{{ publication.auteurs }}</td>
-								                <td>{{ publication.motsCles }}</td>
-								                <td>
-								                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
-								                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
-								                </td>
-								            </tr>
-								        {% else %}
-								            <tr>
-								                <td colspan="5">no records found</td>
-								            </tr>
-								        {% endfor %}
-								        </tbody>
-								    </table>
-								
-								    <a href="{{ path('app_publication_new') }}">Create new</a> #}
-{% endblock %}
+		{# <table class="table">
+														        <thead>
+														            <tr>
+														                <th>Id</th>
+														                <th>Titre</th>
+														                <th>Auteurs</th>
+														                <th>MotsCles</th>
+														                <th>actions</th>
+														            </tr>
+														        </thead>
+														        <tbody>
+														        {% for publication in publications %}
+														            <tr>
+														                <td>{{ publication.id }}</td>
+														                <td>{{ publication.titre }}</td>
+														                <td>{{ publication.auteurs }}</td>
+														                <td>{{ publication.motsCles }}</td>
+														                <td>
+														                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
+														                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
+														                </td>
+														            </tr>
+														        {% else %}
+														            <tr>
+														                <td colspan="5">no records found</td>
+														            </tr>
+														        {% endfor %}
+														        </tbody>
+														    </table>
+														
+														    <a href="{{ path('app_publication_new') }}">Create new</a> #}
+	{% endblock %}
 

@@ -4,19 +4,28 @@ namespace App\Controller;
 
 use App\Entity\Publication;
 use App\Form\PublicationType;
-use App\Repository\PublicationRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PublicationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Loader\Configurator\session;
 
 #[Route('/publication')]
 class PublicationController extends AbstractController
 {
     #[Route('/', name: 'app_publication_index', methods: ['GET'])]
-    public function index(PublicationRepository $publicationRepository): Response
+    public function index(PublicationRepository $publicationRepository, SessionInterface $session): Response
     {
+
+        $id = $session->get('currentUserId');
+
+    if (!$id) {
+        return $this->redirectToRoute('app_homepage');
+    }
+    
         return $this->render('publication/index.html.twig', [
             'publications' => $publicationRepository->findAll(),
         ]);

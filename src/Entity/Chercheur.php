@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ChercheurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -132,4 +132,10 @@ class Chercheur
 
         return $this;
     }
+
+    public static function findChercheurById(EntityManagerInterface $entityManager, int $id): ?Chercheur
+    {
+        return $entityManager->getRepository(Chercheur::class)->find($id);
+    }
+
 }
