@@ -116,40 +116,32 @@
         }
 
         
-
-        /* Flex container for publications */
+/* Flex container for publications */
 .publications {
-    margin-top: 44px;
-    margin-right: 44px;
-    margin-left: 44px;
-    margin-bottom: 44px;
-
+    margin: 44px; /* Simplified margin for all sides */
     display: flex;
     flex-wrap: wrap;
-    gap: 0px; /* Adjust spacing between publication items */
+    gap: 20px; /* Adjust spacing between publication items */
     justify-content: flex-start;
 }
 
-/* Styles for the container */
+/* Styles for the card */
 .card {
     width: 200px;
     height: 140px;
-    flex-shrink: 0;
-
     border-radius: 10px;
-    background: var(--Rectangle-716, #FFF);
-
-    /* Shadow/4px */
-    box-shadow: 0px 4px 8px 0px rgba(171, 190, 209, 0.40);
-
-
+    background: #FFF;
+    box-shadow: 0px 4px 8px 0px rgba(171, 190, 209, 0.4);
     display: flex;
     justify-content: space-between;
-    /* Distribute space between elements */
     align-items: center;
-    /* Center items vertically */
-    margin: 0 auto;
-    /* Center the container horizontally */
+    padding: 0 20px; /* Padding for content inside the card */
+}
+
+/* Styles for the content inside the card */
+.card .content {
+    display: flex;
+    align-items: center;
 }
 
 /* Pagination container */

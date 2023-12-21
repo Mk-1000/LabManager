@@ -29,28 +29,26 @@
 	</div>
 
 	<!-- Pagination Container -->
-	<div
-		class="pagination-container">
-		<!-- Publications Display -->
-		<div class="publications">
-			{% for publication in publications %}
-				<div class="card">
-					<div class="titre">
-						<h6>{{ publication.id }}</h6>
-						<i class="bi bi-plus"></i>
-					</div>
-				</div>
+	<!-- Pagination Container -->
+<div class="pagination-container">
+    <!-- Publications Display -->
+    <div class="publications">
+        {% for publication in publications %}
+            <div class="card">
+                <div class="content">
+                    <h6>{{ publication.id }}</h6>
+                    <i class="bi bi-plus"></i>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
-			{% else %}
-				<h2>No records found</h2>
-			{% endfor %}
-		</div>
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+        <!-- Your pagination controls will go here -->
+    </div>
+</div>
 
-		<!-- Pagination Controls -->
-		<div
-			class="pagination-controls"><!-- Your pagination controls will go here -->
-		</div>
-	</div>
 
 
 	{# <td>{{ publication.id }}</td>
