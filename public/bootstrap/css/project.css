@@ -1,0 +1,138 @@
+        /* Styles for the container */
+        .containerOfSearch  {
+            width: 600px;
+            height: 48px;
+            display: flex;
+            justify-content: space-between; /* Distribute space between elements */
+            align-items: center; /* Center items vertically */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Styles for the search input */
+        .search-container {
+
+            width: 90%;
+            height: 50px;
+            position: relative;
+            display: flex;
+            align-items: center; /* Vertically align items */
+            border: 1.5px;
+            border-radius: 10px;
+            padding-left: 40px; /* Adjust this based on the icon width */
+            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+            background-color : white;
+
+        }
+
+        #searchPublication {
+            border: 1.5px solid transparent; /* Set a transparent border */
+            outline: none; /* Remove the default focus outline */
+            box-shadow: 0 0 0 2px #ffff; /* Add a subtle box-shadow on focus */
+        }
+    
+
+        /* Styles for the search icon */
+        .search-icon {
+            color: #66BB69; /* Set the text color to green */
+            position: absolute;
+            left: 10px; /* Adjust icon positioning */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1; /* Ensure the icon is above the input field */
+        }
+        .button-container button {
+            height: 48px;
+            width: 48px;
+            border: none;
+            border-radius: 60px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+            display: flex; /* Enable flex properties */
+            justify-content: center; /* Horizontally center the icon within the button */
+            align-items: center; /* Vertically center the icon within the button */
+            color: #66BB69; /* Set the text color to green */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+        }
+
+        .container button:hover {
+            background-color: #A5D6A7; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        .container button:active {
+            background-color: #66BB69; /* Change background color on click/selection */
+            color: white; /* Change text color on click/selection */
+        }
+        .card{
+            width: 225px;
+            height: fit-content;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: var(--Rectangle-716, #FFF);
+            /* Shadow/4px */
+            box-shadow: 0px 4px 8px 0px rgba(171, 190, 209, 0.40);
+        }
+        .card .content {
+            display: flex;
+            align-items: center;
+        }
+        .projects {
+            margin: 44px; /* Simplified margin for all sides */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust spacing between publication items */
+            justify-content: flex-start;
+        }
+       /* public/css/style.css */
+
+
+
+    .container .progress{
+        position: relative;
+        width :150px;
+        height: 150px;
+        border-radius: 50%;
+        background: #ebeaea linear-gradient(to right, transparent 50% ,var(--clr) 0);
+    }
+    .container .progress h3
+    {
+      position: absolute;
+      top: 50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      font-size: 2.5em;
+      z-index: 1;
+      font-weight: 500;  
+    }
+    .container .progress h3 span{
+       font-size: 0.65em;
+       font-weight: 400;
+    }
+    .container .progress::before{
+        content:'';
+        display: block;
+        height: 100%;
+        margin-left: 50%;
+        transform-origin: left;
+        border-radius: 0 100% 100% 0/50%;
+    }
+    .container .progress::after{
+        content:'';
+        position :absolute;
+        inset: 10px;
+        border-radius: 50%;
+        background: #FFF;  
+    }
+    .container .progress::before{
+        background: var(--clr);
+        transform: rotate(calc(((var(--i) - 50)* 0.01turn)));
+    }
+    /*if value is less than 50%, then */
+    .container .progress.less::before{
+        background: #cbcbcb;
+        transform: rotate(calc(((var(--i) - 50)* 0.01turn)));
+    }
+
+        .pagination-container {
+            /* Add styles for pagination container */
+        }
