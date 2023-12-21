@@ -75,7 +75,7 @@ class Publication
 
     public function setProjectDeRecherche(?ProjectDeRecherche $projectDeRecherche): static
     {
-        $this->projectDeRecherche = $projectDeRecherche->get;
+        $this->projectDeRecherche = $projectDeRecherche;
 
         return $this;
     }

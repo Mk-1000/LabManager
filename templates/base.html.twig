@@ -43,10 +43,12 @@
 						</div>
 
 					<div>
-						{% set nom = app.session.get('currentUserNom') %}
+						{# {{ dump(app.session.all) }} #}
+
+						{% set nom = app.session.get('currentUserId') %}
 
 						{% if nom is defined %}
-							<a href="{{ path('app_equipment_index') }}" class="btn btn-outline-success">{{ nom|slice(0, 1) }}</a>
+							<a href="{{ path('app_equipment_index') }}" class="btn btn-outline-success">{{ nom}}</a>
 						{% else %}
 							<a href="{{ path('app_homepage') }}" class="btn btn-outline-success">Sign IN</a>
 						{% endif %}

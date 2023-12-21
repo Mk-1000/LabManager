@@ -125,8 +125,9 @@
         }
 
         /* Styles for the card */
-        .card {
-            width: 200px;
+        .card {           
+            min-width: 200px;
+            width:auto ;
             height: 140px;
             border-radius: 10px;
             background: #FFF;

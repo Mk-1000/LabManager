@@ -55,7 +55,7 @@
 								{% endif %}
 
 								<div class="title-content">
-									<h6>{{ publication.id }}</h6>
+									<h6>{{ publication.titre }}</h6>
 									{% if id ==  publication.projectDeRecherche.chercheur.getId()%}
 										<i class="bi bi-pencil-square"></i>
 									{% else %}
@@ -76,8 +76,14 @@
 									</div>
 
 									<div class="mot-cles">
-										<p class="p1">{{ publication.motsCles }}</p>
+										<p class="p1">
+											{% set motsArray = publication.motsCles|split(' ') %}
+											{% for mot in motsArray %}
+												#{{ mot }}{% if not loop.last %} {% endif %}
+											{% endfor %}
+										</p>
 									</div>
+
 
 								</div>
 							</a>

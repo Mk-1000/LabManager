@@ -15,7 +15,7 @@ class HomepageController extends AbstractController
     public function index(SessionInterface $session, EntityManagerInterface $entityManager): Response
     {
         // Use the injected $session object to set the attribute
-        $session->set('currentUserId', 57);
+        $session->set('currentUserId', 72);
 
         $chercheur = Chercheur::findChercheurById($entityManager, 57);
         if ($chercheur) {

@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
                $projet = new ProjectDeRecherche();
                $projet->setTitre($faker->word());
                $projet->setDescription($faker->words(10, true));
-               $projet->setEtatAvancement(random_int(0, 10));
+               $projet->setEtatAvancement(random_int(0, 100));
                $projet->setChercheur($chercheur);
 
                $publications = [];
@@ -66,7 +66,7 @@ class AppFixtures extends Fixture
 
                for ($k = 0; $k < $numEquipments; $k++) {
                   $equipment = new Equipment();
-                  $equipment->setNom('Equipment Name ' . $i.$k);
+                  $equipment->setNom('Equipment ' . $i.$k);
                   $equipment->setEtat(true);
                   $equipment->setProjectDeRecherche($projet);
 
