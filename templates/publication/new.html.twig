@@ -2,12 +2,14 @@
 
 {% block title %}New Publication{% endblock %}
 {% block addSstylesheets %}
-	<link href="{{asset('bootstrap/css/publication.css')}}" rel="stylesheet">
+	<link href="{{asset('bootstrap/css/add_publication.css')}}" rel="stylesheet">
 {% endblock %}
-{% block body %}
+{% block content%}
+<div class='form container' >
     <h1>Create new Publication</h1>
 
     {{ include('publication/_form.html.twig') }}
 
-    <a href="{{ path('app_publication_index') }}">back to list</a>
+    {# <a href="{{ path('app_publication_index') }}">back to list</a> #}
+</div>
 {% endblock %}

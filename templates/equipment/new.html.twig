@@ -2,10 +2,14 @@
 
 {% block title %}New Equipment{% endblock %}
 
-{% block body %}
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/add_equip.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="content form">
     <h1>Create new Equipment</h1>
 
     {{ include('equipment/_form.html.twig') }}
 
-    <a href="{{ path('app_equipment_index') }}">back to list</a>
+    </div>
 {% endblock %}
