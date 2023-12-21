@@ -1,39 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Publication index{% endblock %}
+{% block title %}Publication index
+{% endblock %}
+
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/publication.css')}}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-    <h1>Publication index</h1>
+	<div id="search1" class="containerOfSearch">
+		<div class="search-container">
+			<i class="search-icon bi bi-search"></i>
+			<input id="searchPublication" type="text" class="form-control" placeholder="Search">
+		</div>
+		<div class="select-container">
+			<select>
+				<option value="option1">Option 1</option>
+				<option value="option2">Option 2</option>
+			</select>
+		</div>
+		<div class="button-container">
+			<button type="button">
+				<i class="bi bi-plus"></i>
+			</button>
+		</div>
+	</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Auteurs</th>
-                <th>MotsCles</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for publication in publications %}
-            <tr>
-                <td>{{ publication.id }}</td>
-                <td>{{ publication.titre }}</td>
-                <td>{{ publication.auteurs }}</td>
-                <td>{{ publication.motsCles }}</td>
-                <td>
-                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
-                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	{# <h1>Publication index</h1> #}
 
-    <a href="{{ path('app_publication_new') }}">Create new</a>
+	{# <table class="table">
+				        <thead>
+				            <tr>
+				                <th>Id</th>
+				                <th>Titre</th>
+				                <th>Auteurs</th>
+				                <th>MotsCles</th>
+				                <th>actions</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        {% for publication in publications %}
+				            <tr>
+				                <td>{{ publication.id }}</td>
+				                <td>{{ publication.titre }}</td>
+				                <td>{{ publication.auteurs }}</td>
+				                <td>{{ publication.motsCles }}</td>
+				                <td>
+				                    <a href="{{ path('app_publication_show', {'id': publication.id}) }}">show</a>
+				                    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
+				                </td>
+				            </tr>
+				        {% else %}
+				            <tr>
+				                <td colspan="5">no records found</td>
+				            </tr>
+				        {% endfor %}
+				        </tbody>
+				    </table>
+				
+				    <a href="{{ path('app_publication_new') }}">Create new</a> #}
 {% endblock %}
+
