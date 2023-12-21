@@ -1,0 +1,200 @@
+        /* Styles for the container */
+        .containerOfSearch {
+            width: 600px;
+            height: 48px;
+            display: flex;
+            justify-content: space-between;
+            /* Distribute space between elements */
+            align-items: center;
+            /* Center items vertically */
+            margin: 0 auto;
+            /* Center the container horizontally */
+        }
+
+        /* Styles for the search input */
+        .search-container {
+
+            width: 85%;
+            height: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            /* Vertically align items */
+            border: 1.5px;
+            border-radius: 10px;
+            padding-left: 40px;
+            /* Adjust this based on the icon width */
+            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+            background-color: white;
+
+        }
+
+        #searchEquipement {
+            border: 1.5px solid transparent;
+            /* Set a transparent border */
+            outline: none;
+            /* Remove the default focus outline */
+            box-shadow: 0 0 0 2px #ffff;
+            /* Add a subtle box-shadow on focus */
+        }
+
+
+        /* Styles for the search icon */
+        .search-icon {
+            color: #66BB69;
+            /* Set the text color to green */
+            position: absolute;
+            left: 10px;
+            /* Adjust icon positioning */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            /* Ensure the icon is above the input field */
+        }
+
+
+        /* Styles for the button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            /* Horizontally center the content */
+            align-items: center;
+            /* Vertically center the content */
+        }
+
+        /* Styles for the button */
+        .button-container button {
+            height: 48px;
+            width: 48px;
+            border: none;
+            border-radius: 60px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+            display: flex;
+            /* Enable flex properties */
+            justify-content: center;
+            /* Horizontally center the icon within the button */
+            align-items: center;
+            /* Vertically center the icon within the button */
+            color: #66BB69;
+            /* Set the text color to green */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition for color change */
+        }
+
+        .containerOfSearch button:hover {
+            background-color: #A5D6A7;
+            /* Change background color on hover */
+            color: white;
+            /* Change text color on hover */
+        }
+
+        .containerOfSearch button:active {
+            background-color: #66BB69;
+            /* Change background color on click/selection */
+            color: white;
+            /* Change text color on click/selection */
+        }
+
+        /* Flex container for equipemetns */
+        .equipemetns {
+            margin: 44px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        /* Styles for the card */
+        .card {
+            width: 200px;
+            height: 120px;
+            border-radius: 10px;
+            background: #FFF;
+            box-shadow: 0px 4px 8px 0px rgba(171, 190, 209, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            transition: background-color 0.3s;
+            /* Smooth transition for background color */
+        }
+
+        .card:hover {
+            background-color: #A5D6A7;
+            color: white;
+            /* Change text color on hover */
+        }
+
+        .card:active {
+            background-color: #66BB69;
+            color: white;
+            /* Change text color on click/selection */
+        }
+
+        /* Styles for the content inside the card */
+        .title-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-content h6 {
+            margin: 0;
+            color: #4CAF4F;
+        }
+
+        .title-content i {
+            color: #4CAF4F;
+        }
+
+        /* Styles for the description content */
+        .card .Etat-content {
+            margin-top: 20px;
+            color: #4D4D4D;
+            /* Adjust top margin */
+        }
+
+        .card .Etat-content .p1 {
+            font-size: 10px;
+            color: #6d6d6d; /* Set initial color to grey */
+            transition: color 0.3s; /* Apply transition for color change */
+        }
+        
+        /* Adjust text color on hover and active states */
+        .card:hover .description-content .p1,
+        .card:active .description-content .p1 {
+            color: white; /* Change text color on hover and active states */
+        }
+        
+
+        .card .description-content p {
+            margin: 0;
+            /* Reset margins for paragraph elements */
+            font-size: 12px;
+            /* Set the font size */
+            color: #4D4D4D;
+            /* Set the text color */
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+        
+
+        .card .description-content .mot-cles {
+            display: flex;
+            justify-content: center;
+            /* Center the content horizontally */
+            align-items: center;
+            /* Center the content vertically */
+        }
+
+        /* Adjust text color on hover and active states */
+        .card:hover .title-content h6,
+        .card:active .title-content h6,
+        .card:hover .title-content i,
+        .card:active .title-content i {
+            color: white;
+        }
+

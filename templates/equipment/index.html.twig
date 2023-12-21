@@ -1,37 +1,126 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Equipment index{% endblock %}
+{% block title %}Equipment index
+{% endblock %}
+
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/equipement.css')}}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-    <h1>Equipment index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Etat</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for equipment in equipment %}
-            <tr>
-                <td>{{ equipment.id }}</td>
-                <td>{{ equipment.nom }}</td>
-                <td>{{ equipment.etat ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">show</a>
-                    <a href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	{# Retrieve session variables in Twig #}
+	{% set id = app.session.get('currentUserId') %}
 
-    <a href="{{ path('app_equipment_new') }}">Create new</a>
-{% endblock %}
+	{# Display the values if they exist #}
+	{% if id is defined %}
+		{# <p>id: {{ id }}</p> #}
+
+
+		<div id="search2" class="containerOfSearch">
+			<div class="search-container">
+				<i class="search-icon bi bi-search"></i>
+				<input id="searchEquipement" type="text" class="form-control" placeholder="Search">
+			</div>
+
+			<div class="button-container">
+				<a href="{{ path('app_equipment_new') }}">
+					<button type="button">
+						<i class="bi bi-plus"></i>
+					</button>
+				</a>
+			</div>
+
+
+		</div>
+
+		<!-- Pagination Container -->
+		<!-- Pagination Container -->
+		<div
+			class="pagination-container">
+			<!-- equipemetns Display -->
+			<div class="equipemetns">
+				{% for equipment in equipment %}
+					<div class="card">
+
+						{% if id ==  equipment.projectDeRecherche.chercheur.getId()%}
+							<a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">
+
+							{% else %}
+								<a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">
+
+								{% endif %}
+
+								<div class="title-content">
+									<h6>{{ equipment.nom }}</h6>
+
+									{% if equipment.etat %}
+										<i class="bi bi-plus" style="color: #4D4D4D;"></i>
+									{% else %}
+										<i class="bi bi-plus"></i>
+									{% endif %}
+
+								</div>
+
+								<div class="Etat-content">
+									<p>Etat:
+										{% if equipment.etat %}
+											<span  style="color: #E53835;">
+												Non Disponible</span>
+										{% else %}
+											<span>
+												Disponible</span>
+										{% endif %}
+
+									</p>
+								</div>
+							</a>
+
+						</div>
+					{% endfor %}
+				</div>
+
+				<!-- Pagination Controls -->
+				<div
+					class="pagination-controls"><!-- Your pagination controls will go here -->
+				</div>
+			</div>
+		{% else %}
+			<h4 colspan="5">no records found</h4>
+		{% endif %}
+
+
+		{# 
+				    <h1>Equipment index</h1>
+				
+				    <table class="table">
+				        <thead>
+				            <tr>
+				                <th>Id</th>
+				                <th>Nom</th>
+				                <th>Etat</th>
+				                <th>actions</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        {% for equipment in equipment %}
+				            <tr>
+				                <td>{{ equipment.id }}</td>
+				                <td>{{ equipment.nom }}</td>
+				                <td>{{ equipment.etat ? 'Yes' : 'No' }}</td>
+				                <td>
+				                    <a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">show</a>
+				                    <a href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">edit</a>
+				                </td>
+				            </tr>
+				        {% else %}
+				            <tr>
+				                <td colspan="4">no records found</td>
+				            </tr>
+				        {% endfor %}
+				        </tbody>
+				    </table>
+				
+				    <a href="{{ path('app_equipment_new') }}">Create new</a> #}
+	{% endblock %}
+
