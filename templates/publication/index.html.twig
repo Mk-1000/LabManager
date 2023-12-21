@@ -42,11 +42,6 @@
 
 		</div>
 
-		<!-- Pagination Container -->
-		<!-- Pagination Container -->
-		<div
-			class="pagination-container">
-			<!-- Publications Display -->
 			<div class="publications">
 				{% for publication in publications %}
 					<div class="card">
@@ -89,17 +84,12 @@
 
 						</div>
 					{% endfor %}
-				</div>
 
-				<!-- Pagination Controls -->
-				<div
-					class="pagination-controls"><!-- Your pagination controls will go here -->
-				</div>
+
+					{% else %}
+						<h4 colspan="5">no records found</h4>
+					{% endif %}
 			</div>
-		{% else %}
-			<h4 colspan="5">no records found</h4>
-		{% endif %}
-
 
 		{# <td>{{ publication.id }}</td>
 															                <td>{{ publication.titre }}</td>

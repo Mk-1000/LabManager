@@ -82,7 +82,7 @@
             color: white; /* Change text color on click/selection */
         }
         .card{
-            width: 225px;
+            width: 200px;
             height: fit-content;
             flex-shrink: 0;
             border-radius: 10px;
@@ -93,13 +93,15 @@
         .card .content {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+
         }
         .projects {
-            margin: 44px; /* Simplified margin for all sides */
+            margin: 44px;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Adjust spacing between publication items */
-            justify-content: flex-start;
+            gap: 20px;
+            justify-content: center;  
         }
        /* public/css/style.css */
 
@@ -197,6 +199,49 @@
         .card:active .title-content i {
             color: white;
         }
-        .pagination-container {
-            /* Add styles for pagination container */
+
+
+
+        .progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            background-color: rgba(255, 255, 255, 0); /* Transparent background */
         }
+          
+          .progress-circle {
+            position: relative;
+            width: 200px;
+            height: 200px;
+          }
+          
+          .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+          }
+          
+          .progress-svg {
+            transform: rotate(-90deg);
+          }
+          
+          .progress-circle-bg {
+            fill: none;
+            stroke: #ddd;
+            stroke-width: 10;
+          }
+          
+          .progress-circle-fill {
+            fill: none;
+            stroke: #4CAF4F;
+            stroke-width: 10;
+            stroke-dasharray: 0;
+            stroke-dashoffset: 0;
+            transition: stroke-dasharray 1s ease 0s, stroke-dashoffset 1s ease 0s;
+          }
+          

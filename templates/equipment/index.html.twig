@@ -34,12 +34,8 @@
 
 		</div>
 
-		<!-- Pagination Container -->
-		<!-- Pagination Container -->
-		<div
-			class="pagination-container">
-			<!-- equipemetns Display -->
-			<div class="equipemetns">
+            <div class="equipemetns" >
+
 				{% for equipment in equipment %}
 					<div class="card">
 
@@ -78,18 +74,13 @@
 
 						</div>
 					{% endfor %}
+
+
+                {% else %}
+                    <h4 colspan="5">no records found</h4>
+                {% endif %}
+
 				</div>
-
-				<!-- Pagination Controls -->
-				<div
-					class="pagination-controls"><!-- Your pagination controls will go here -->
-				</div>
-			</div>
-		{% else %}
-			<h4 colspan="5">no records found</h4>
-		{% endif %}
-
-
 		{# 
 				    <h1>Equipment index</h1>
 				
