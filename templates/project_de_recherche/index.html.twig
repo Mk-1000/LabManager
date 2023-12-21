@@ -5,17 +5,18 @@
 {% block title %}ProjectDeRecherche index{% endblock %}
 
 {% block content %}
-    <h1>ProjectDeRecherche index</h1>
-
     <div id="search1" class="containerOfSearch">
 		<div class="search-container">
 			<i class="search-icon bi bi-search"></i>
 			<input id="searchPublication" type="text" class="form-control" placeholder="Search">
 		</div>
 		<div class="button-container">
-			<button type="button">
-				<i class="bi bi-plus"></i>
+    <a href="{{ path('app_project_de_recherche_new') }}">
+      <button type="button">
+        <i class="bi bi-plus"></i>
 			</button>
+    </a>
+			
 		</div>
 	</div>
   <div class="pagination-container">
@@ -23,13 +24,19 @@
         {% for project_de_recherche in project_de_recherches %}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">{{ project_de_recherche.titre }}</h5>
-                <div class="container"> 
+            <div class="title-content">
+             <h6>{{ project_de_recherche.titre }}</h6>
+             <i class="bi bi-chevron-right"></i>
+            </div>
+               <div class="description-content">
+
+                <div class="container">
+                  <p>Etat d'avancement</p> 
                   <div class="progress less" style="--i:12;--clr:#4CAF4F;">
                   <h3>{{ project_de_recherche.etatAvancement }}<span>%</span></h3> 
                   </div>
                 </div>
-                <h6 class="card-subtitle mb-2 text-body-secondary">{{ project_de_recherche.etatAvancement }}</h6>
+               </div>
             </div>
         </div>
         
@@ -38,7 +45,7 @@
         {% endfor %}
     </div>
   </div>
-        <nav aria-label="...">
+        {# <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
       <a class="page-link">Previous</a>
@@ -52,8 +59,7 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>
+</nav> #}
 {# <a href="{{ path('app_project_de_recherche_show', {'id': project_de_recherche.id}) }}">show</a> #}
 {# <a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">edit</a> #}
-    <a href="{{ path('app_project_de_recherche_new') }}">Create new</a>
 {% endblock %}

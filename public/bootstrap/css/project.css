@@ -11,7 +11,7 @@
         /* Styles for the search input */
         .search-container {
 
-            width: 90%;
+            width: 85%;
             height: 50px;
             position: relative;
             display: flex;
@@ -21,6 +21,11 @@
             padding-left: 40px; /* Adjust this based on the icon width */
             box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
             background-color : white;
+
+        }
+        button a{
+            text-align: none;
+            text-decoration: none;
 
         }
 
@@ -40,6 +45,19 @@
             transform: translateY(-50%);
             z-index: 1; /* Ensure the icon is above the input field */
         }
+        .containerOfSearch button:hover {
+            background-color: #A5D6A7;
+            /* Change background color on hover */
+            color: white;
+            /* Change text color on hover */
+        }
+        .containerOfSearch button:active {
+            background-color: #66BB69;
+            /* Change background color on click/selection */
+            color: white;
+            /* Change text color on click/selection */
+        }
+
         .button-container button {
             height: 48px;
             width: 48px;
@@ -87,12 +105,20 @@
 
 
 
+    
     .container .progress{
         position: relative;
-        width :150px;
-        height: 150px;
+        width :80px;
+        height: 80px;
         border-radius: 50%;
+        display: flex;
+        float: right;
         background: #ebeaea linear-gradient(to right, transparent 50% ,var(--clr) 0);
+    }
+    .container p{
+        position: absolute;
+        float: left;
+        transform: translate(0%,90%);
     }
     .container .progress h3
     {
@@ -106,7 +132,7 @@
     }
     .container .progress h3 span{
        font-size: 0.65em;
-       font-weight: 400;
+       font-weight: 100;
     }
     .container .progress::before{
         content:'';
@@ -132,7 +158,45 @@
         background: #cbcbcb;
         transform: rotate(calc(((var(--i) - 50)* 0.01turn)));
     }
+    .card:hover {
+        background-color: #A5D6A7;
+        color: white;
+        /* Change text color on hover */
+    }
+    .card:hover h6{
+        color: white;
+    }
+    .card:hover .description-content h3,
+    .card:active .description-content h3 {
+        color: black; /* Change text color on hover and active states */
+    }
 
+    .card:active {
+        background-color: #66BB69;
+        color: white;
+        /* Change text color on click/selection */
+    }
+    /* Styles for the content inside the card */
+     .title-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title-content h6 {
+        margin: 0;
+        color: #4CAF4F;
+    }
+
+    .title-content i {
+        color: #4CAF4F;
+    }
+    .card:hover .title-content h6,
+        .card:active .title-content h6,
+        .card:hover .title-content i,
+        .card:active .title-content i {
+            color: white;
+        }
         .pagination-container {
             /* Add styles for pagination container */
         }
