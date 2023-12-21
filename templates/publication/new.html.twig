@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Publication{% endblock %}
-
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/publication.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
     <h1>Create new Publication</h1>
 

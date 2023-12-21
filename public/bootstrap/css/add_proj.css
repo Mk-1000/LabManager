@@ -1,0 +1,42 @@
+.form-control{
+    width:50%;
+    border: 1.5px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    margin-bottom:24px;
+}
+h1{
+    margin-bottom: 24px;
+}
+.btn{
+    margin-top: 24px;
+}
+select {
+    width: 50px;
+    height: 48px;
+    border: 1.5px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    color: #4D4D4D;
+    /* Change the text color of the options */
+
+}
+.form{
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    margin-left: 30%;
+    width:50%;
+    /* margin: 44px; */
+    /* display: flex;
+            flex-wrap: wrap; */
+            /* gap: 20px; */
+            justify-content: center;
+}
+
+a{
+    text-align: none;
+    text-decoration: none;
+}
