@@ -48,5 +48,46 @@
 				.spacer {
 					height: 20px; /* Adjust as needed */
 				}
+				.poopover-container {
+					position: relative;
+					display: inline-block;
+				}
+				
+				#poopoverButton {
+					padding: 10px;
+					cursor: pointer;
+				}
+				
+				.poopover-options {
+					display: none;
+					position: absolute;
+					top: 100%;
+					left:-50px;
+					border-radius: 10px;
+					background-color: #fff;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+					
+				}
+
+				
+				.option {
+					padding: 10px;
+					border-radius: 10px;
+					border-bottom: 1px dashed #ddd;
+					width: max-content;
+					
+				}
+				.option:hover{
+					background-color:rgb(92, 166, 196) ;
+					color: white;
+					
+				}
+				.option i {
+					margin-right: 10px;
+				} 
+				.option:last-child {
+					border-bottom: none;
+				}
+				
 			
 				

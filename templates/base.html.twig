@@ -49,13 +49,15 @@
 						
 
 						{% if nom is defined %}
-							<div class="dropdown">
-								<button onclick="toggleDropdown()" class="btn btn-outline-success">{{ nom|slice(0, 1) }}{{ prenom|slice(0, 1) }}</button>
-								<div id="dropdownContent" class="dropdown-content">
-									<a href="{{ path('app_chercheur_show', {'id': id}) }}">Profile</a>
-									<a href="{{ path('app_chercheur_edit', {'id': id}) }}">Settings</a>
-									<a href="{{ path('app_homepage') }}">Sign Out</a>
-								</div>
+							<div  class="poopover-container">
+  								<button type="button" class="btn btn-outline-success" id="poopoverButton">
+    								{{ nom|slice(0, 1) }}{{ prenom|slice(0, 1) }}
+ 								 </button>
+									<div class="poopover-options">
+										<div class="option"><a><i class="bi bi-person-lines-fill"></i>profile</a></div>
+										<div class="option"><a><i class="bi bi-gear-fill"></i>setting</a></div>
+										<a><div class="option"><a><i class="bi bi-box-arrow-left"></i>logout</a></div>
+									</div>
 							</div>
 						{% else %}
 							<a href="{{ path('app_homepage') }}" class="btn btn-outline-success">Sign IN</a>
@@ -72,7 +74,24 @@
 		{% endblock %}
 	</body>
 			{% block javascripts %}
-			
+			<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var poopoverButton = document.getElementById('poopoverButton');
+    var poopoverOptions = document.querySelector('.poopover-options');
+
+    poopoverButton.addEventListener('click', function () {
+        poopoverOptions.style.display = poopoverOptions.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close the options if the user clicks outside the poopover container
+    document.addEventListener('click', function (event) {
+        if (!poopoverButton.contains(event.target) && !poopoverOptions.contains(event.target)) {
+            poopoverOptions.style.display = 'none';
+        }
+    });
+});
+
+</script>
 			{% block addjavascripts %}
 			{% endblock %}
 			{% endblock %}
