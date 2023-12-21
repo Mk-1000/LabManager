@@ -1,80 +1,94 @@
 {% extends 'base.html.twig' %}
 {% block addSstylesheets %}
-    <link href="{{asset('bootstrap/css/project.css')}}" rel="stylesheet">
+	<link href="{{asset('bootstrap/css/project.css')}}" rel="stylesheet">
 {% endblock %}
-{% block title %}ProjectDeRecherche index{% endblock %}
+{% block title %}ProjectDeRecherche index
+{% endblock %}
 
 {% block content %}
-    <div id="search1" class="containerOfSearch">
+
+    {# Retrieve session variables in Twig #}
+    {% set id = app.session.get('currentUserId') %}
+
+    {# Display the values if they exist #}
+    {% if id is defined %}
+        {# <p>id: {{ id }}</p> #}
+
+	<div id="search1" class="containerOfSearch">
 		<div class="search-container">
 			<i class="search-icon bi bi-search"></i>
 			<input id="searchPublication" type="text" class="form-control" placeholder="Search">
 		</div>
 		<div class="button-container">
-    <a href="{{ path('app_project_de_recherche_new') }}">
-      <button type="button">
-        <i class="bi bi-plus"></i>
-			</button>
-    </a>
-			
+			<a href="{{ path('app_project_de_recherche_new') }}">
+				<button type="button">
+					<i class="bi bi-plus"></i>
+				</button>
+			</a>
+
 		</div>
 	</div>
 
-    <div class="projects">
-        <!-- ... previous HTML code ... -->
+	<div
+		class="projects">
+		<!-- ... previous HTML code ... -->
 
-{% for project_de_recherche in project_de_recherches %}
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <div class="title-content">
-      <h6>{{ project_de_recherche.titre }}</h6>
-      <i class="bi bi-chevron-right"></i>
-    </div>
-    <div class="description-content">
-      <div class="content">
-        <p>Etat d'avancement</p>
-        <div class="progress">
-          <div class="progress-circle" data-progress="{{ project_de_recherche.etatAvancement }}">
-            <div class="progress-text">0%</div>
-            <svg class="progress-svg" width="200" height="200">
-              <circle class="progress-circle-bg" cx="100" cy="100" r="40"></circle>
-              <circle class="progress-circle-fill" cx="100" cy="100" r="40"></circle>
-            </svg>
+		{% for project_de_recherche in project_de_recherches %}
+		  {% if id ==  project_de_recherche.chercheur.getId()%}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <div class="title-content">
+              <h6>{{ project_de_recherche.titre }}</h6>
+              <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="description-content">
+              <div class="content">
+                <p>Etat d'avancement</p>
+                <div class="progress">
+                  <div class="progress-circle" data-progress="{{ project_de_recherche.etatAvancement }}">
+                    <div class="progress-text">0%</div>
+                    <svg class="progress-svg" width="200" height="200">
+                      <circle class="progress-circle-bg" cx="100" cy="100" r="40"></circle>
+                      <circle class="progress-circle-fill" cx="100" cy="100" r="40"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% else %}
-<h1>no records found</h1>
-{% endfor %}
+		  {% endif %}
+		{% else %}
+			<h1>no records found</h1>
+		{% endfor %}
 
-<!-- ... rest of the HTML ... -->
+		<!-- ... rest of the HTML ... -->
 
-    </div>
+	</div>
 
-			
+{% endif %}
 
 {% endblock %}
+
 {% block javascripts %}
-<script>
-  function setProgress(percent, circle, text) {
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (percent / 100) * circumference;
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = offset;
-    text.textContent = `${percent}%`;
-  }
+	<script>
+		function setProgress(percent, circle, text) {
+const radius = circle.r.baseVal.value;
+const circumference = 2 * Math.PI * radius;
+const offset = circumference - (percent / 100) * circumference;
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = offset;
+text.textContent = `${percent}%`;
+}
 
-  const progressCircles = document.querySelectorAll('.progress-circle');
-  progressCircles.forEach(circleContainer => {
-    const circle = circleContainer.querySelector('.progress-circle-fill');
-    const text = circleContainer.querySelector('.progress-text');
-    const progress = parseInt(circleContainer.getAttribute('data-progress'));
+const progressCircles = document.querySelectorAll('.progress-circle');
+progressCircles.forEach(circleContainer => {
+const circle = circleContainer.querySelector('.progress-circle-fill');
+const text = circleContainer.querySelector('.progress-text');
+const progress = parseInt(circleContainer.getAttribute('data-progress'));
 
-    setProgress(progress, circle, text);
-  });
-</script>
+setProgress(progress, circle, text);
+});
+	</script>
 {% endblock %}
+
