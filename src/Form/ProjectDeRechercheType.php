@@ -35,10 +35,10 @@ class ProjectDeRechercheType extends AbstractType
                 'id'=>'searchPublication',
                 ]
             ])
-            ->add('chercheur', EntityType::class, [
-                'class' => Chercheur::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('chercheur', EntityType::class, [
+            //     'class' => Chercheur::class,
+            //     'choice_label' => 'id',
+            // ])
         ;
     }
 
