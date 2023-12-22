@@ -47,10 +47,10 @@ class AuthManagerController extends AbstractController
             $session->set('currentUserEmail', $chercheur->getEmail());
             $session->set('currentUserRole', $chercheur->getRole());
             
-            return new RedirectResponse($this->generateUrl('app_homepage'));
+            return new RedirectResponse($this->generateUrl('app_publication_index'));
         }
         else{
-            return new RedirectResponse($this->generateUrl('auth_manager/index.html.twig'));
+            return new RedirectResponse($this->generateUrl('app_homepage'));
 
         }
     }
