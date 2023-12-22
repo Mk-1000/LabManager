@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Chercheur{% endblock %}
-
-{% block body %}
-    <h1>Chercheur</h1>
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/show.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <h4>Profile</h4>
 
     <table class="table">
         <tbody>
@@ -34,7 +36,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_chercheur_index') }}">back to list</a>
+    {# <a href="{{ path('app_chercheur_index') }}">back to list</a> #}
 
     <a href="{{ path('app_chercheur_edit', {'id': chercheur.id}) }}">edit</a>
 

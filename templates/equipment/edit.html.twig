@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Edit Equipment{% endblock %}
-
-{% block body %}
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/add_equip.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
     <h1>Edit Equipment</h1>
 
     {{ include('equipment/_form.html.twig', {'button_label': 'Update'}) }}
