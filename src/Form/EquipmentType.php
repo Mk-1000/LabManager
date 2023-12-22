@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use Doctrine\ORM\EntityRepository;
 
 use App\Entity\Equipment;
 use App\Entity\ProjectDeRecherche;
@@ -22,14 +23,22 @@ class EquipmentType extends AbstractType
                 ]
             ])
             ->add('etat',null,[
-                'label'=>'disponible?','attr'=>[
+                'label'=>"allez-vous l'utiliser maintenant ?",'attr'=>[
                     'class'=>'box'
                 ]
             ])
             ->add('projectDeRecherche', EntityType::class, [
                 'class' => ProjectDeRecherche::class,
-                'choice_label' => 'id',
-            ])
+                'label'=>"l'équipement sera utilisé dans quel projet",
+                'choice_label' => 'titre', // Assuming 'titre' is the field in ProjectDeRecherche to be shown as the label
+                'placeholder' => 'Select Project', // Set a placeholder for the dropdown
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->leftJoin('p.chercheur', 'c')
+                        ->where('c.id = :chercheurId')
+                        ->setParameter('chercheurId', 72);
+                },])
+            
         ;
     }
 
