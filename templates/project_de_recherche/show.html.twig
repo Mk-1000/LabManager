@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}ProjectDeRecherche{% endblock %}
-
+{% block addSstylesheets %}
+	<link href="{{asset('bootstrap/css/show.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
     <h1>ProjectDeRecherche</h1>
 
@@ -30,5 +32,5 @@
 
     <a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">edit</a>
 
-    {{ include('project_de_recherche/_delete_form.html.twig') }}
+    {# {{ include('project_de_recherche/_delete_form.html.twig') }} #}
 {% endblock %}

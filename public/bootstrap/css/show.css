@@ -1,0 +1,127 @@
+/* Table style */
+table {
+  border-spacing: 1px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+table * {
+  position: relative;
+}
+
+td,
+th {
+  padding-left: 8px;
+}
+
+thead tr {
+  height: 60px;
+  background: #A5D6A7;
+  font-size: 16px;
+}
+
+tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+tbody tr:last-child {
+  border: 0;
+}
+
+td,
+th {
+  text-align: left;
+}
+
+td.l {
+  text-align: right;
+}
+
+td.c,
+th.c,
+td.r,
+th.r {
+  text-align: center;
+}
+
+/* Media Query for XS screens */
+@media screen and (max-width: 35.5em) {
+  table {
+    display: block;
+  }
+
+  table > *,
+  tr,
+  td,
+  th {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    height: auto;
+    padding: 8px 0;
+  }
+
+  td {
+    padding-left: 45%;
+    margin-bottom: 12px;
+  }
+
+  td:last-child {
+    margin-bottom: 0;
+  }
+
+  td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: 0;
+  }
+
+  td:nth-child(1):before {
+    content: "Code";
+  }
+
+  td:nth-child(2):before {
+    content: "Stock";
+  }
+
+  td:nth-child(3):before {
+    content: "Cap";
+  }
+
+  td:nth-child(4):before {
+    content: "Inch";
+  }
+
+  td:nth-child(5):before {
+    content: "Box Type";
+  }
+}
+
+/* Body style */
+/* body {
+ 
+  font: 400 14px 'Calibri', 'Arial';
+  padding: 20px;
+} */
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+h4{
+  text-align: center;
+}
