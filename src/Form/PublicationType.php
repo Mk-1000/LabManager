@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Publication;
 use App\Entity\ProjectDeRecherche;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,7 +22,9 @@ class PublicationType extends AbstractType
                 'id'=>'searchPublication',
                 ]
             ])
-            ->add('auteurs')
+
+            // ->add('auteurs')
+
             ->add('motsCles',TextType::class,[
                 'attr'=>[
                 'class' =>'form-control inp',
@@ -30,7 +33,14 @@ class PublicationType extends AbstractType
             ])
             ->add('projectDeRecherche', EntityType::class, [
                 'class' => ProjectDeRecherche::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
+                'placeholder' => 'Select Project', // Set a placeholder for the dropdown
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->leftJoin('p.chercheur', 'c')
+                        ->where('c.id = :chercheurId')
+                        ->setParameter('chercheurId', 72);
+                }
             ])
         ;
     }

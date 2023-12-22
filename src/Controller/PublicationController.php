@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Chercheur;
 use App\Entity\Publication;
 use App\Form\PublicationType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,7 +35,12 @@ class PublicationController extends AbstractController
     #[Route('/new', name: 'app_publication_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $session = $request->getSession();
+        $currentUserId = $session->get('currentUserId');
+        $chercheur = $entityManager->getRepository(Chercheur::class)->find($currentUserId); // Fetch Chercheur with $currentUserId
+
         $publication = new Publication();
+        $publication->setAuteurs($chercheur->getPrenom() . ' ' . $chercheur->getNom());
         $form = $this->createForm(PublicationType::class, $publication);
         $form->handleRequest($request);
 
