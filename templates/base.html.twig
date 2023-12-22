@@ -17,7 +17,7 @@
 			<link href="{{asset('bootstrap/css/nav.css')}}" rel="stylesheet">
 
 			{% block addSstylesheets %}{% endblock %}
-			
+
 		{% endblock %}
 
 	</head>
@@ -42,57 +42,67 @@
 							</ul>
 						</div>
 
-					<div>
-						{% set id = app.session.get('currentUserId') %}
-						{% set nom = app.session.get('currentUserNom') %}
-						{% set prenom = app.session.get('currentUserPrenom') %}
-						
+						<div>
+							{% set idUser = app.session.get('currentUserId') %}
+							{% set nom = app.session.get('currentUserNom') %}
+							{% set prenom = app.session.get('currentUserPrenom') %}
 
-						{% if nom is defined %}
-							<div  class="poopover-container">
-  								<button type="button" class="btn btn-outline-success" id="poopoverButton">
-    								{{ nom|slice(0, 1) }}{{ prenom|slice(0, 1) }}
- 								 </button>
+
+							{% if nom is defined %}
+								<div class="poopover-container">
+									<button type="button" class="btn btn-outline-success" id="poopoverButton">
+										{{ nom|slice(0, 1) }}{{ prenom|slice(0, 1) }}
+									</button>
 									<div class="poopover-options">
-										<div class="option"><a><i class="bi bi-person-lines-fill"></i>profile</a></div>
-										<div class="option"><a><i class="bi bi-gear-fill"></i>setting</a></div>
-										<a><div class="option"><a><i class="bi bi-box-arrow-left"></i>logout</a></div>
+										<div class="option">
+											<a class="nav-link" href="{{ path('app_chercheur_show', {'id': idUser}) }}">
+												<i class="bi bi-person"></i><span>profile</span></a>
+										</div>
+										<div class="option">
+											<a class="nav-link" href="{{ path('app_chercheur_edit', {'id': idUser}) }}">
+												<i class="bi bi-gear"></i><span>setting</span></a>
+										</div>
+										<a>
+											<div class="option">
+												<a class="nav-link" href="{{ path('app_equipment_index') }}">
+													<i class="bi bi-box-arrow-left"></i><span>logout</span></a>
+											</div>
+										</div>
 									</div>
+								{% else %}
+									<a href="{{ path('app_homepage') }}" class="btn btn-outline-success">Sign IN</a>
+								{% endif %}
 							</div>
-						{% else %}
-							<a href="{{ path('app_homepage') }}" class="btn btn-outline-success">Sign IN</a>
-						{% endif %}
-					</div>
 
-						
-					</div>
-				</nav>
-				<div class="spacer"></div>
+
+						</div>
+					</nav>
+					<div class="spacer"></div>
+				{% endblock %}
+				{% block content %}{% endblock %}
+
 			{% endblock %}
-			{% block content %}{% endblock %}
+		</body>
+		{% block javascripts %}
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					var poopoverButton = document.getElementById('poopoverButton');
+					var poopoverOptions = document.querySelector('.poopover-options');
 
+					poopoverButton.addEventListener('click', function () {
+					poopoverOptions.style.display = poopoverOptions.style.display === 'block' ? 'none' : 'block';
+					});
+
+					// Close the options if the user clicks outside the poopover container
+					document.addEventListener('click', function (event) {
+					if (! poopoverButton.contains(event.target) && ! poopoverOptions.contains(event.target)) {
+					poopoverOptions.style.display = 'none';
+					}
+					});
+					});
+			</script>
+			{% block addjavascripts %}{% endblock %}
 		{% endblock %}
 	</body>
-			{% block javascripts %}
-			<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var poopoverButton = document.getElementById('poopoverButton');
-    var poopoverOptions = document.querySelector('.poopover-options');
-
-    poopoverButton.addEventListener('click', function () {
-        poopoverOptions.style.display = poopoverOptions.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Close the options if the user clicks outside the poopover container
-    document.addEventListener('click', function (event) {
-        if (!poopoverButton.contains(event.target) && !poopoverOptions.contains(event.target)) {
-            poopoverOptions.style.display = 'none';
-        }
-    });
-});
-
-</script>
-			{% block addjavascripts %}
-			{% endblock %}
-			{% endblock %}
 </html>
+

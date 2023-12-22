@@ -71,14 +71,14 @@
 
 				
 				.option {
-					padding: 10px;
+					padding: 6px;
 					border-radius: 10px;
 					border-bottom: 1px dashed #ddd;
 					width: max-content;
 					
 				}
 				.option:hover{
-					background-color:rgb(92, 166, 196) ;
+					background-color:#A5D6A7 ;
 					color: white;
 					
 				}

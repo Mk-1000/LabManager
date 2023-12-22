@@ -74,22 +74,22 @@
 {% block addjavascripts %}
 	<script>
 		function setProgress(percent, circle, text) {
-const radius = circle.r.baseVal.value;
-const circumference = 2 * Math.PI * radius;
-const offset = circumference - (percent / 100) * circumference;
-circle.style.strokeDasharray = `${circumference} ${circumference}`;
-circle.style.strokeDashoffset = offset;
-text.textContent = `${percent}%`;
-}
+      const radius = circle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (percent / 100) * circumference;
+      circle.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle.style.strokeDashoffset = offset;
+      text.textContent = `${percent}%`;
+    }
 
-const progressCircles = document.querySelectorAll('.progress-circle');
-progressCircles.forEach(circleContainer => {
-const circle = circleContainer.querySelector('.progress-circle-fill');
-const text = circleContainer.querySelector('.progress-text');
-const progress = parseInt(circleContainer.getAttribute('data-progress'));
+    const progressCircles = document.querySelectorAll('.progress-circle');
+    progressCircles.forEach(circleContainer => {
+    const circle = circleContainer.querySelector('.progress-circle-fill');
+    const text = circleContainer.querySelector('.progress-text');
+    const progress = parseInt(circleContainer.getAttribute('data-progress'));
 
-setProgress(progress, circle, text);
-});
+    setProgress(progress, circle, text);
+    });
 	</script>
 {% endblock %}
 
