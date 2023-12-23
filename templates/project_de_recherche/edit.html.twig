@@ -7,18 +7,21 @@
 {% block content %}
     <div class='form' >
     <h4>Edit ProjectDeRecherche</h4>
-
+    <div>
+    <a href="{{ path('app_pub_project', {'id': project_de_recherche.id}) }}">
+        <button class="btn btn-outline-warning" type='button'>Gérer publications</button>
+    </a>
+    <a href="{{ path('app_equip_project', {'id': project_de_recherche.id}) }}">
+        <button class="btn btn-outline-warning" type='button'>Gérer equipments</button>
+    </a>
+    </div>
+    
     {{ include('project_de_recherche/_form.html.twig', {'button_label': 'Update'}) }}
 
     {# <a href="{{ path('app_project_de_recherche_index') }}">back to list</a>
 
     {{ include('project_de_recherche/_delete_form.html.twig') }} #}
-    <a href="{{ path('app_pub_project', {'id': project_de_recherche.id}) }}">
-        <button class="btn btn-outline-warning" type='button'>editer publications de se projet </button>
-    </a>
-    <a href="{{ path('app_equip_project', {'id': project_de_recherche.id}) }}">
-        <button class="btn btn-outline-warning" type='button'>editer equipment de se projet </button>
-    </a>
+
 
 </div>  
 {% endblock %}

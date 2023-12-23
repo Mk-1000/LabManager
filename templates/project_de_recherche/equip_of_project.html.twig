@@ -6,6 +6,9 @@
 {% block content %}
 <div class="equipemetns">
 {% for equipment in project_de_recherche.getEquipments()%}
+		  {% if equipment.Etat %}
+
+
     <div class="card">
 							<a href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">
 
@@ -15,8 +18,8 @@
 										<i class="bi bi-pencil-square"></i>
 								</div>
 							</a>
-
     </div>
+		  {% endif %}
 {% endfor %}
 </div>
 {% endblock %}
