@@ -6,6 +6,10 @@
 	<link href="{{asset('bootstrap/css/show.css')}}" rel="stylesheet">
 {% endblock %}
 {% block content %}
+
+
+
+
     <h4>Detail de Publication</h4>
 
    <table class="publication-table">
@@ -35,6 +39,15 @@
             <tr>
                 <th>MotsCles</th>
                 <td>{{ publication.motsCles }}</td>
+            </tr>
+
+                        <tr>
+                <th>Equipement utilisé</th>
+                <td>
+                {% for equipment in publication.ProjectDeRecherche.getEquipments() %}
+                    {{ equipment.nom }},
+                {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
