@@ -58,7 +58,20 @@ class ProjectDeRechercheController extends AbstractController
             'project_de_recherche' => $projectDeRecherche,
         ]);
     }
-
+    #[Route('/{id}/pub', name: 'app_pub_project', methods: ['GET'])]
+    public function showpub(ProjectDeRecherche $projectDeRecherche): Response
+    {
+        return $this->render('project_de_recherche/pub_of_project.html.twig', [
+            'project_de_recherche' => $projectDeRecherche,
+        ]);
+    }
+    #[Route('/{id}/equip', name: 'app_equip_project', methods: ['GET'])]
+    public function showeuip(ProjectDeRecherche $projectDeRecherche): Response
+    {
+        return $this->render('project_de_recherche/equip_of_project.html.twig', [
+            'project_de_recherche' => $projectDeRecherche,
+        ]);
+    }
     #[Route('/{id}/edit', name: 'app_project_de_recherche_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ProjectDeRecherche $projectDeRecherche, EntityManagerInterface $entityManager): Response
     {

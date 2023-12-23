@@ -49,6 +49,9 @@ body {
 .nav-link:hover {
     color: #66BB69;
 }
+.nav-link:active {
+    color: #66BB69;
+}
 
 /* Popover Styles */
 .poopover-container {
@@ -95,4 +98,7 @@ body {
 
 .option:hover {
     color: #fff;
+}
+nav .btn {
+    margin: 0%;
 }

@@ -1,0 +1,41 @@
+{# le veiw de publication a editer pour un projet  #}
+{% extends 'base.html.twig' %}
+{% block addSstylesheets %}
+    <link href="{{asset('bootstrap/css/publication.css')}}" rel="stylesheet">
+{% endblock %}
+{% block title %}pubs of ProjectDeRecherche{% endblock %}
+{% block content %}
+<div class="publications">
+{% for publication in project_de_recherche.getPublications()%}
+    <div class="card">
+							<a href="{{ path('app_publication_edit', {'id': publication.id}) }}">
+
+							
+								<div class="title-content">
+									<h6>{{ publication.titre }}</h6>
+										<i class="bi bi-pencil-square"></i>
+								</div>
+
+								<div class="description-content">
+
+									<div class="auteur">
+										<p>Auteur:
+											{{ publication.auteurs }}</p>
+									</div>
+									<div class="mot-cles">
+										<p class="p1">
+											{% set motsArray = publication.motsCles|split(' ') %}
+											{% for mot in motsArray %}
+												#{{ mot }}{% if not loop.last %} {% endif %}
+											{% endfor %}
+										</p>
+									</div>
+
+
+								</div>
+							</a>
+
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

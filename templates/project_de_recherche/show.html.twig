@@ -3,11 +3,18 @@
 {% block title %}ProjectDeRecherche{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/show.css')}}" rel="stylesheet">
+    <link href="{{asset('bootstrap/css/publication.css')}}" rel="stylesheet">
 {% endblock %}
-{% block body %}
-    <h1>ProjectDeRecherche</h1>
+{% block content %}
+    <h4>ProjectDeRecherche</h4>
 
     <table class="table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -32,5 +39,44 @@
 
     <a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">edit</a>
 
+<div class="publications">
+{% for publication in project_de_recherche.getPublications()%}
+    <div class="card">
+							<a href="{{ path('app_publication_show', {'id': publication.id}) }}">
+
+							
+								<div class="title-content">
+									<h6>{{ publication.titre }}</h6>
+										<i class="bi bi-chevron-right"></i>
+								</div>
+
+								<div class="description-content">
+
+									<div class="auteur">
+										<p>Auteur:
+											{{ publication.auteurs }}</p>
+									</div>
+
+									<div class="titre-projet">
+										<p>Projet:
+											{{ publication.projectDeRecherche.getTitre() }}</p>
+									</div>
+
+									<div class="mot-cles">
+										<p class="p1">
+											{% set motsArray = publication.motsCles|split(' ') %}
+											{% for mot in motsArray %}
+												#{{ mot }}{% if not loop.last %} {% endif %}
+											{% endfor %}
+										</p>
+									</div>
+
+
+								</div>
+							</a>
+
+    </div>
+{% endfor %}
+</div>
     {# {{ include('project_de_recherche/_delete_form.html.twig') }} #}
 {% endblock %}

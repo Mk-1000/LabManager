@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block addSstylesheets %}
+    <link href="{{asset('bootstrap/css/equipement.css')}}" rel="stylesheet">
+{% endblock %}
+{% block title %}pubs of ProjectDeRecherche{% endblock %}
+{% block content %}
+<div class="equipemetns">
+{% for equipment in project_de_recherche.getEquipments()%}
+    <div class="card">
+							<a href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">
+
+							
+								<div class="title-content">
+									<h6>{{ equipment.nom }}</h6>
+										<i class="bi bi-pencil-square"></i>
+								</div>
+							</a>
+
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
