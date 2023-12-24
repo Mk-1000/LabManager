@@ -17,6 +17,16 @@
   font-family: "Poppins", sans-serif;
 } #}
 
+.titre-projet{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+		gap:60px;
+		margin:10px;
+		
+}
+
+
 .wrapper {
   position: relative;
   overflow: hidden;
@@ -72,7 +82,18 @@
     </style>
 {% endblock %}
 {% block content %}
-	<h4>ProjectDeRecherche</h4>
+	<div class="titre-projet">
+		<h4>ProjectDeRecherche: {{ project_de_recherche.titre}}</h4>	
+			{# Retrieve session variables in Twig #}
+	{% set id = app.session.get('currentUserId') %}
+
+	{# Display the values if they exist #}
+	{% if id is defined and project_de_recherche.Chercheur.getId()==id %}
+		{# <p>id: {{ id }}</p> #}
+		{{ include('project_de_recherche/_delete_form.html.twig') }}
+	{% endif %}
+	</div>
+
 
 	<table class="table">
 		<thead>
@@ -98,99 +119,24 @@
 				<th>EtatAvancement</th>
 				<td>{{ project_de_recherche.etatAvancement }}</td>
 			</tr>
+			</tr>
+
+                        <tr>
+                <th>Equipement utilisé</th>
+                <td>
+                {% for equipment in project_de_recherche.getEquipments() %}
+                    <a style='color: #3559E0;' href="{{ path('app_equipment_show', {'id': equipment.id}) }}">{{ equipment.nom }} </a>,
+                {% endfor %}
+                </td>
+            </tr>
 		</tbody>
 	</table>
 
 	{# <a href="{{ path('app_project_de_recherche_index') }}">back to list</a>
 
 	<a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">edit</a> #}
-
+	<br></br>
 	<h4>publications de projet</h4>
-
-	{# <div class="publications">
-
-		{% for i, publication in project_de_recherche.getPublications()%}
-			<div class="card">
-				<a href="{{ path('app_publication_show', {'id': publication.id}) }}">
-
-
-					<div class="title-content">
-						<h6>{{ publication.titre }}</h6>
-						<i class="bi bi-chevron-right"></i>
-					</div>
-
-					<div class="description-content">
-
-						<div class="auteur">
-							<p>Auteur:
-								{{ publication.auteurs }}</p>
-						</div>
-
-						<div class="titre-projet">
-							<p>Projet:
-								{{ publication.projectDeRecherche.getTitre() }}</p>
-						</div>
-
-						<div class="mot-cles">
-							<p class="p1">
-								{% set motsArray = publication.motsCles|split(' ') %}
-								{% for mot in motsArray %}
-									#{{ mot }}
-									{% if not loop.last %}{% endif %}
-								{% endfor %}
-							</p>
-						</div>
-
-
-					</div>
-				</a>
-
-			</div>
-		{% endfor %}
-	</div>
-
-	<h4>equipeents de projet</h4>
-	<div class="publications">
-
-		{% for publication in project_de_recherche.getPublications()%}
-			<div class="card">
-				<a href="{{ path('app_publication_show', {'id': publication.id}) }}">
-
-
-					<div class="title-content">
-						<h6>{{ publication.titre }}</h6>
-						<i class="bi bi-chevron-right"></i>
-					</div>
-
-					<div class="description-content">
-
-						<div class="auteur">
-							<p>Auteur:
-								{{ publication.auteurs }}</p>
-						</div>
-
-						<div class="titre-projet">
-							<p>Projet:
-								{{ publication.projectDeRecherche.getTitre() }}</p>
-						</div>
-
-						<div class="mot-cles">
-							<p class="p1">
-								{% set motsArray = publication.motsCles|split(' ') %}
-								{% for mot in motsArray %}
-									#{{ mot }}
-									{% if not loop.last %}{% endif %}
-								{% endfor %}
-							</p>
-						</div>
-
-
-					</div>
-				</a>
-
-			</div>
-		{% endfor %}
-	</div> #}
 
     <div class="wrapper">
   <i id="left" class="fa-solid fa-angle-left"></i>
@@ -228,7 +174,6 @@
   <i id="right" class="fa-solid fa-angle-right" ></i>
 </div>
 
-	{# {{ include('project_de_recherche/_delete_form.html.twig') }} #}
 {% endblock %}
 
 

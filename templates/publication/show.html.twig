@@ -8,8 +8,6 @@
 {% block content %}
 
 
-
-
     <h4>Detail de Publication</h4>
 
    <table class="publication-table">
@@ -26,7 +24,7 @@
             </tr>
             <tr>
                 <th>Nom de Projet </th>
-                <td>{{ publication.ProjectDeRecherche.getTitre()}}</td>
+                <td><a style='color: #3559E0;' href="{{ path('app_project_de_recherche_show', {'id': publication.ProjectDeRecherche.id}) }}">{{ publication.ProjectDeRecherche.getTitre()}} </a></td>
             </tr>
             <tr>
                 <th>description de projet</th>
@@ -45,7 +43,7 @@
                 <th>Equipement utilisé</th>
                 <td>
                 {% for equipment in publication.ProjectDeRecherche.getEquipments() %}
-                    {{ equipment.nom }},
+                    <a style='color: #3559E0;' href="{{ path('app_equipment_show', {'id': equipment.id}) }}">{{ equipment.nom }} </a>,
                 {% endfor %}
                 </td>
             </tr>
