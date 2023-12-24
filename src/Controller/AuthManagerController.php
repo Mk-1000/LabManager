@@ -32,15 +32,29 @@ class AuthManagerController extends AbstractController
         return new RedirectResponse($this->generateUrl('app_homepage'));
     }
 
+    #[Route('/sign_in', name: 'app_signIn', methods: ['GET'])]
+    public function signIn(): Response
+    {
+        return $this->render('auth_manager/signIn.html.twig', [
+        ]);
+    }
+
+    #[Route('/sign_up', name: 'app_signUp', methods: ['GET'])]
+    public function signUp(): Response
+    {
+        return $this->render('auth_manager/signUp.html.twig', [
+        ]);
+    }
+
     #[Route('/login', name: 'app_login')]
 
     public function login(Request $request,SessionInterface $session,EntityManagerInterface $entityManager): RedirectResponse
     {
         // Clear the user's session
         // Use the injected $session object to set the attribute
-        $session->set('currentUserId', 7);
+        $session->set('currentUserId', 72);
 
-        $chercheur = Chercheur::findChercheurById($entityManager, 7);
+        $chercheur = Chercheur::findChercheurById($entityManager, 72);
         if ($chercheur) {
             $session->set('currentUserNom', $chercheur->getNom());
             $session->set('currentUserPrenom', $chercheur->getPrenom());
