@@ -44,7 +44,9 @@ class AuthManagerController extends AbstractController
     {
         return $this->render('auth_manager/signUp.html.twig', [
         ]);
+        
     }
+    
 
     #[Route('/login', name: 'app_login')]
 

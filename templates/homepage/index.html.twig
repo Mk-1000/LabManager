@@ -1,123 +1,133 @@
 {% extends 'base.html.twig' %}
 
 {% block addSstylesheets %}
-    <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
+{{ encore_entry_link_tags('app') }}
+<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{asset('bootstrap/css/templatemo-digimedia-v3.css')}}">
-    <link rel="stylesheet" href="{{asset('bootstrap/css/animated.css')}}">
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="{{asset('bootstrap/css/templatemo-digimedia-v3.css')}}">
+<link rel="stylesheet" href="{{asset('bootstrap/css/fontawesome.css.css')}}">
+<link rel="stylesheet" href="{{asset('bootstrap/css/owl.css')}}">
+<link rel="stylesheet" href="{{asset('bootstrap/css/animated.css')}}">
+
+
 {% endblock %}
 
 
 {% block content %}
 
-	<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-lg-6 align-self-center">
-							<div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-								<div class="row">
-									<div class="col-lg-12">
-										<h6>Digital Media Agency</h6>
-										<h2>We Boost Your Website Traffic</h2>
-										<p>This template is brought to you by TemplateMo website. Feel free to use this for a commercial purpose. You are not allowed to redistribute the template ZIP file on any other template website. Thank you.</p>
-									</div>
-									<div class="col-lg-12">
-										<div class="border-first-button scroll-to-section">
-											<a href="#contact">Free Quote</a>
-										</div>
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-6 align-self-center">
+						<div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
+							data-wow-delay="1s">
+							<div class="row">
+								<div class="col-lg-12">
+									<h6>Digital Media Agency</h6>
+									<h2>We Boost Your Website Traffic</h2>
+									<p>This template is brought to you by TemplateMo website. Feel free to use this for
+										a commercial purpose. You are not allowed to redistribute the template ZIP file
+										on any other template website. Thank you.</p>
+								</div>
+								<div class="col-lg-12">
+									<div class="border-first-button scroll-to-section">
+										<a href="#contact">Free Quote</a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-								<img src="images/slider-dec-v3.png" alt="">
-							</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+							<img src="images/slider-dec-v3.png" alt="">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div id="about" class="about section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-								<img src="images/about-dec-v3.png" alt="">
-							</div>
+<div id="about" class="about section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+							<img src="images/about-dec-v3.png" alt="">
 						</div>
-						<div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-							<div class="about-right-content">
-								<div class="section-heading">
-									<h6>About Us</h6>
-									<h4>Who is DigiMedia
-										<em>Agency</em>
-									</h4>
-									<div class="line-dec"></div>
+					</div>
+					<div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s"
+						data-wow-delay="0.5s">
+						<div class="about-right-content">
+							<div class="section-heading">
+								<h6>About Us</h6>
+								<h4>Who is DigiMedia <em>Agency</em></h4>
+								<div class="line-dec"></div>
+							</div>
+							<p>We hope this DigiMedia template is useful for your work. You can use this template for
+								any purpose. You may <a rel="nofollow" href="http://paypal.me/templatemo"
+									target="_blank">contribute a little amount</a> via PayPal to <a
+									href="https://templatemo.com/contact" target="_blank">support TemplateMo</a> in
+								creating new templates regularly.</p>
+							<div class="row">
+								<div class="col-lg-4 col-sm-4">
+									<div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s"
+										data-wow-delay="0s">
+										<div class="progress" data-percentage="90">
+											<span class="progress-left">
+												<span class="progress-bar"></span>
+											</span>
+											<span class="progress-right">
+												<span class="progress-bar"></span>
+											</span>
+											<div class="progress-value">
+												<div>
+													30%<br>
+													<span>TWIG/CSS</span>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<p>We hope this DigiMedia template is useful for your work. You can use this template for any purpose. You may
-									<a rel="nofollow" href="http://paypal.me/templatemo" target="_blank">contribute a little amount</a>
-									via PayPal to
-									<a href="https://templatemo.com/contact" target="_blank">support TemplateMo</a>
-									in creating new templates regularly.</p>
-								<div class="row">
-									<div class="col-lg-4 col-sm-4">
-										<div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-											<div class="progress" data-percentage="90">
-												<span class="progress-left">
-													<span class="progress-bar"></span>
-												</span>
-												<span class="progress-right">
-													<span class="progress-bar"></span>
-												</span>
-												<div class="progress-value">
-													<div>
-														90%<br>
-														<span>Coding</span>
-													</div>
+								<div class="col-lg-4 col-sm-4">
+									<div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s"
+										data-wow-delay="0s">
+										<div class="progress" data-percentage="80">
+											<span class="progress-left">
+												<span class="progress-bar"></span>
+											</span>
+											<span class="progress-right">
+												<span class="progress-bar"></span>
+											</span>
+											<div class="progress-value">
+												<div>
+													60%<br>
+													<span>PHP</span>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-											<div class="progress" data-percentage="80">
-												<span class="progress-left">
-													<span class="progress-bar"></span>
-												</span>
-												<span class="progress-right">
-													<span class="progress-bar"></span>
-												</span>
-												<div class="progress-value">
-													<div>
-														80%<br>
-														<span>Photoshop</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-											<div class="progress" data-percentage="80">
-												<span class="progress-left">
-													<span class="progress-bar"></span>
-												</span>
-												<span class="progress-right">
-													<span class="progress-bar"></span>
-												</span>
-												<div class="progress-value">
-													<div>
-														80%<br>
-														<span>Animation</span>
-													</div>
+								</div>
+								<div class="col-lg-4 col-sm-4">
+									<div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s"
+										data-wow-delay="0s">
+										<div class="progress" data-percentage="80">
+											<span class="progress-left">
+												<span class="progress-bar"></span>
+											</span>
+											<span class="progress-right">
+												<span class="progress-bar"></span>
+											</span>
+											<div class="progress-value">
+												<div>
+													10%<br>
+													<span>JAVASCRIPT</span>
 												</div>
 											</div>
 										</div>
@@ -130,8 +140,105 @@
 			</div>
 		</div>
 	</div>
-    <br><br>
-	
+</div>
+
+
+
+
+<div id="blog" class="blog">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 offset-lg-4  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+				<div class="section-heading">
+					<h6>Recent News</h6>
+					<h4>Check Our Blog <em>Posts</em></h4>
+					<div class="line-dec"></div>
+				</div>
+			</div>
+			<div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+				<div class="blog-post">
+					<div class="thumb">
+						<a href="#"><img src="images\portfolio-01.jpg" alt=""></a>
+					</div>
+					<div class="down-content">
+						<span class="category">SEO Analysis</span>
+						<span class="date">03 August 2021</span>
+						<a href="#">
+							<h4>Lorem Ipsum Dolor Sit Amet, Consectetur Adelore
+								Eiusmod Tempor Incididunt</h4>
+						</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers itii eiumod deis tempor
+							incididunt ut labore.</p>
+						<span class="author"><img src="images\portfolio-01.jpg" alt="">By: Andrea Mentuzi</span>
+						<div class="border-first-button"><a href="#">Discover More</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+				<div class="blog-posts">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="post-item">
+								<div class="thumb">
+									<a href="#"><img src="images\portfolio-01.jpg" alt=""></a>
+								</div>
+								<div class="right-content">
+									
+									<a href="#">
+										<h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+									</a>
+									<p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+									<div class="row-button">
+										<div class="border-first-button"><a href="#"><i class="bi bi-linkedin"></i> LinkedIn </a></div>
+										<div class="border-first-button"><a href="#"><i class="bi bi-github"></i> GitHub</a></div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="post-item">
+								<div class="thumb">
+									<a href="#"><img src="images\portfolio-01.jpg" alt=""></a>
+								</div>
+								<div class="right-content">
+									<a href="#">
+										<h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+									</a>
+									<p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+									<div class="row-button">
+										<div class="border-first-button"><a href="#"><i class="bi bi-linkedin"></i> LinkedIn </a></div>
+										<div class="border-first-button"><a href="#"><i class="bi bi-github"></i> GitHub</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="post-item last-post-item">
+								<div class="thumb">
+									<a href="#"><img src="images\portfolio-01.jpg" alt=""></a>
+								</div>
+								<div class="right-content">
+									
+									<a href="#">
+										<h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4>
+									</a>
+									<p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
+									<div class="row-button">
+										<div class="border-first-button"><a href="#"><i class="bi bi-linkedin"></i> LinkedIn </a></div>
+										<div class="border-first-button"><a href="#"><i class="bi bi-github"></i> GitHub</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
 
 {% endblock %}
-
