@@ -189,14 +189,22 @@ const carouselWidth = document.querySelector('.carousel').offsetWidth;
 const visibleCardCount = 3;
 let currentIndex = 0;
 if (cardCount<4) {
-  element.style.display = 'none';
+ element.style.display = 'none';
  element2.style.display = 'none';
   
 } else {
  element.style.display = 'block';
-  element2.style.display = 'block';
+ element2.style.display = 'block';
 
 }
+if(visibleCardCount+currentIndex === cardCount){
+  element.style.display = 'none';
+}else{
+  if(currentIndex===0){
+ element2.style.display = 'none';
+}
+}
+
 console.log(cardCount);
 {# console.log(carouselWidth); #}
 document.getElementById('right').addEventListener('click', () => {
@@ -204,6 +212,10 @@ if(cardCount>visibleCardCount+currentIndex){
   currentIndex += 1;
  const transformValue = `translateX(-${((carouselWidth /3)+15) * currentIndex}px)`;
  carousel.style.transform = transformValue;
+ element2.style.display = 'block';
+ if(visibleCardCount+currentIndex === cardCount){
+  element.style.display = 'none';
+}
 }
 });
 
@@ -213,7 +225,12 @@ document.getElementById('left').addEventListener('click', () => {
  }
  const transformValue = `translateX(-${(cardWidth+15)  * currentIndex}px)`;
  carousel.style.transform = transformValue;
+ element.style.display = 'block';
+ if(currentIndex===0){
+ element2.style.display = 'none';
+}
 });
+
 </script>
 
 {% endblock %}
