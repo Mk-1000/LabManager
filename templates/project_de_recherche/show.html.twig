@@ -47,11 +47,26 @@
 }
 
 #left {
-  left: 27%;
+  left: 24%;
+  margin-left:5px
 }
+div .flash{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+  border-radius: 60px;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  background-color: #FFFFFF;
 
+}
+div .flash:hover{
+  background-color: #A5D6A7;
+  /* Change background color on hover */
+  color: white;
+}
 #right {
-  right: 27%;
+  right: 24%;
+  margin-right:5px
 }
 /* Existing styles */
 
@@ -139,7 +154,9 @@
 	<h4>publications de projet</h4>
 
     <div class="wrapper">
-  <i id="left" class="fa-solid fa-angle-left"></i>
+    <div id="left" class="flash" >
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    </div>
   <div class="carousel-container">
   <ul class="carousel swiper-container">
     {% for publication in project_de_recherche.getPublications()%}
@@ -171,7 +188,9 @@
     {% endfor %}
   </ul>
   </div>
+  <div id="right" class="flash" >
   <i id="right" class="fa-solid fa-angle-right" ></i>
+  </div>
 </div>
 
 {% endblock %}

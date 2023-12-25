@@ -14,13 +14,23 @@ body {
 }
 
 .signup-form {
-  flex: 1 1 50%; /* Half of the container width */
-  padding: 20px;
+  flex: 1 1 40%; /* Half of the container width */
+  padding: 30px;
   box-sizing: border-box;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+  border-radius: 25px;
+  width:fit-content;
+  margin-right:20px;
+
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  width:100%;
+   
+}
+.form-group:last-child{
+margin-bottom: 0px;
 }
 
 label {
@@ -37,16 +47,38 @@ input[type="submit"] {
   border-radius: 4px;
 }
 
-.input[type="submit"] {
+
+button {
   background-color: #007bff;
-  color: white;
+  height: 48px;
+  color: #66BB69;
   cursor: pointer;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+  border-radius: 15px;
+  border: none;
+  width:30%;
+  margin-left:35%;
+}
+button:hover {
+    background-color: #A5D6A7;
+    /* Change background color on hover */
+    color: white;
+    /* Change text color on hover */
 }
 
 .image-container {
-  flex: 1 1 50%; /* Half of the container width */
+  flex: 1 1 40%; /* Half of the container width */
   overflow: hidden;
   text-align: center;
+}
+.form-control{
+    width:100%;
+    border: 1.5px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    margin-bottom:24px;
 }
 
 .image-container img {
@@ -74,14 +106,18 @@ input[type="submit"] {
     <form action="#" method="POST" class="signup-form">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" class="form-control" required>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+       <div class="form-group">
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
       </div>
       <div class="form-group">
-        <input type="submit" value="Sign Up">
+        <button type="submit"><i class="bi bi-plus-square"></i> signup</button>
       </div>
     </form>
     
