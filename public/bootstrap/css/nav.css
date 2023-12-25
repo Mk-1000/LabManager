@@ -49,7 +49,7 @@ body {
 .nav-link:hover {
     color: #66BB69;
 }
-.nav-link:active {
+.active{
     color: #66BB69;
 }
 

@@ -19,6 +19,7 @@
 			{% block addSstylesheets %}{% endblock %}
 
 		{% endblock %}
+		
 
 	</head>
 	<body>
@@ -34,14 +35,14 @@
 							{# Use responsive utility classes to always show the navigation #}
 							<div class="links collapse navbar-collapse show" id="navbarNav">
 								<ul class="navbar-nav">
-									<li class="nav-item{% if app.request.attributes.get('_route') == 'app_publication_index' %} active{% endif %}">
-										<a class="nav-link" href="{{ path('app_publication_index') }}">Publication</a>
+									<li class="nav-item">
+										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_publication_index' %}active{% endif %}" href="{{ path('app_publication_index') }}">Publication</a>
 									</li>
-									<li class="nav-item{% if app.request.attributes.get('_route') == 'app_project_de_recherche_index' %} active{% endif %}">
-										<a class="nav-link" href="{{ path('app_project_de_recherche_index') }}">Projects</a>
+									<li class="nav-item">
+										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_project_de_recherche_index' %}active{% endif %}" href="{{ path('app_project_de_recherche_index') }}">Projects</a>
 									</li>
-									<li class="nav-item{% if app.request.attributes.get('_route') == 'app_equipment_index' %} active{% endif %}">
-										<a class="nav-link" href="{{ path('app_equipment_index') }}">Equipment</a>
+									<li class="nav-item ">
+										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_equipment_index' %}active{% endif %}" href="{{ path('app_equipment_index') }}">Equipment</a>
 									</li>
 								</ul>
 							</div>
@@ -133,7 +134,9 @@
                     // Listen for window resize
                     window.addEventListener('resize', handleResize);
                 });
+		
             </script>
+		
 		{% block addjavascripts %}{% endblock %}
 	{% endblock %}
 
