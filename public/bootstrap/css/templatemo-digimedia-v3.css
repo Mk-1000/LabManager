@@ -135,6 +135,8 @@ img {
   overflow: hidden;
 }
 
+
+
 /* 
 ---------------------------------------------
 global styles
@@ -882,7 +884,6 @@ Banner Style
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 0px 0px 120px 0px;
   position: relative;
   overflow: hidden;
 }
@@ -1641,7 +1642,7 @@ Blog
   border-bottom-right-radius: 23px;
   border-bottom-left-radius: 23px;
   background-color: #fff;
-  padding: 30px;
+  padding: 50px;
 }
 
 .blog-post .down-content span.category {
@@ -1690,6 +1691,7 @@ Blog
   float: right;
 }
 
+
 .blog-posts {
   margin-left: 30px;
 }
@@ -1705,7 +1707,6 @@ Blog
 .post-item .thumb {
   display: inline-block;
   float: left;
-  margin-right: 30px;
 }
 
 .post-item .thumb img {
