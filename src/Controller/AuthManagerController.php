@@ -55,9 +55,9 @@ class AuthManagerController extends AbstractController
     {
         // Clear the user's session
         // Use the injected $session object to set the attribute
-        $session->set('currentUserId', 72);
+        $session->set('currentUserId', 2);
 
-        $chercheur = Chercheur::findChercheurById($entityManager, 72);
+        $chercheur = Chercheur::findChercheurById($entityManager, 2);
         if ($chercheur) {
             $session->set('currentUserNom', $chercheur->getNom());
             $session->set('currentUserPrenom', $chercheur->getPrenom());
