@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class AuthManagerController extends AbstractController
 {
@@ -71,5 +72,27 @@ class AuthManagerController extends AbstractController
         }
     }
 
+    // private AuthorizationCheckerInterface $authChecker;
+
+    // public function __construct(AuthorizationCheckerInterface $authChecker)
+    // {
+    //     $this->authChecker = $authChecker;
+    // }
+
+    // // Your sign-in action where the user is authenticated
+    // public function signInAction()
+    // {
+    //     // Check if the user is logged in and is an admin
+    //     if ($this->authChecker->isGranted('ROLE_ADMIN')) {
+    //         // User is an admin, handle accordingly
+    //         // For example, redirect to the admin dashboard
+    //         return $this->redirectToRoute('admin_dashboard');
+    //     } else {
+    //         // User is not an admin, handle accordingly
+    //         // For example, redirect to a regular user dashboard or show an error
+    //         return $this->redirectToRoute('regular_user_dashboard');
+    //     }
+    // }
+    
     
 }

@@ -2,21 +2,30 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use App\Entity\Admin;
 
 use App\Entity\Chercheur;
-use App\Entity\ProjectDeRecherche;
-use App\Entity\Publication;
 use App\Entity\Equipment;
+use App\Entity\Publication;
+use App\Entity\ProjectDeRecherche;
 
-use Faker\Factory;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 
 class AppFixtures extends Fixture
 {
    public function load(ObjectManager $manager)
    {
+
+      $admin = new Admin();
+
+      $admin->setEmail("admin@admin.com");
+      $admin->setPassword("admin");
+      
+      $manager->persist($admin);
+
 
        $faker = Factory::create();
        $roles = ["Administrateur", "Superviseur", "Membre de l'équipe", "Gestionnaire de projet"];
