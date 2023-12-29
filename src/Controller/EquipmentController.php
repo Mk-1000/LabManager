@@ -6,10 +6,11 @@ use App\Entity\Equipment;
 use App\Form\EquipmentType;
 use App\Repository\EquipmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/equipment')]
 class EquipmentController extends AbstractController
@@ -32,10 +33,18 @@ class EquipmentController extends AbstractController
 }
 
     #[Route('/new', name: 'app_equipment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
+        // gets an attribute by name
+        $currentUserId = $session->get('currentUserId');
+
         $equipment = new Equipment();
-        $form = $this->createForm(EquipmentType::class, $equipment);
+
+        // Create the form and pass the current user ID as an option
+        $form = $this->createForm(EquipmentType::class, $equipment, [
+            'current_user_id' => $currentUserId,
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -47,9 +56,10 @@ class EquipmentController extends AbstractController
 
         return $this->render('equipment/new.html.twig', [
             'equipment' => $equipment,
-            'form' => $form,
+            'form' => $form->createView(), // Ensure you pass the view of the form to the template
         ]);
     }
+
 
     #[Route('/{id}', name: 'app_equipment_show', methods: ['GET'])]
     public function show(Equipment $equipment): Response

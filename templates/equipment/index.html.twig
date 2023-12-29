@@ -55,11 +55,20 @@
 								<div class="title-content">
 									<h6>{{ equipment.nom }}</h6>
 
-									{% if equipment.etat %}
-										<i class="bi bi-plus" style="color: #4D4D4D;"></i>
+									
+									
+								{% if equipment.etat is defined %}
+									{% if equipment.projectDeRecherche is not null and equipment.projectDeRecherche.chercheur.getId() == id %}
+										<i class="bi bi-pencil-square"></i>
 									{% else %}
-										<i class="bi bi-plus"></i>
+										<i class="bi bi-chevron-right"></i>
 									{% endif %}
+
+									{% else %}
+									<i class="bi bi-plus"></i>
+
+								{% endif %}
+
 
 								</div>
 

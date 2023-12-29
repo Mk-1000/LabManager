@@ -15,6 +15,8 @@ class EquipmentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $currentUserId = $options['current_user_id'];
+
         $builder
             ->add('nom',TextType::class,[
                 'attr'=>[
@@ -29,16 +31,16 @@ class EquipmentType extends AbstractType
             ])
             ->add('projectDeRecherche', EntityType::class, [
                 'class' => ProjectDeRecherche::class,
-                'label'=>"l'équipement sera utilisé dans quel projet",
-                'choice_label' => 'titre', // Assuming 'titre' is the field in ProjectDeRecherche to be shown as the label
-                'placeholder' => 'Select Project', // Set a placeholder for the dropdown
-                'query_builder' => function (EntityRepository $er) {
+                'label' => "l'équipement sera utilisé dans quel projet",
+                'choice_label' => 'titre',
+                'placeholder' => 'Select Project',
+                'query_builder' => function (EntityRepository $er) use ($currentUserId) {
                     return $er->createQueryBuilder('p')
                         ->leftJoin('p.chercheur', 'c')
                         ->where('c.id = :chercheurId')
-                        ->setParameter('chercheurId', 72);
-                },])
-            
+                        ->setParameter('chercheurId', $currentUserId);
+                },
+            ])
         ;
     }
 
@@ -46,6 +48,7 @@ class EquipmentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Equipment::class,
+            'current_user_id' => null, // Add a default value for current_user_id option
         ]);
     }
 }

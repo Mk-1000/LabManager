@@ -51,9 +51,18 @@ class PublicationController extends AbstractController
         $currentUserId = $session->get('currentUserId');
         $chercheur = $entityManager->getRepository(Chercheur::class)->find($currentUserId); // Fetch Chercheur with $currentUserId
 
+        // gets an attribute by name
+        $currentUserId = $session->get('currentUserId');
+
         $publication = new Publication();
+        // Create the form and pass the current user ID as an option
+        $form = $this->createForm(PublicationType::class, $publication, [
+            'current_user_id' => $currentUserId,
+        ]);
+        
         $publication->setAuteurs($chercheur->getPrenom() . ' ' . $chercheur->getNom());
-        $form = $this->createForm(PublicationType::class, $publication);
+        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
