@@ -45,7 +45,7 @@
 
 		{% for project_de_recherche in project_de_recherches %}
 		  {% if id ==  project_de_recherche.chercheur.getId() or isAdmin %}
-      	<a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">
+      	<a href="{{ path('app_project_de_recherche_show', {'id': project_de_recherche.id}) }}">
 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
