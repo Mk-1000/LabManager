@@ -1,4 +1,12 @@
 /* Table style */
+.cont{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 table {
   border-spacing: 1px;
   border-collapse: collapse;

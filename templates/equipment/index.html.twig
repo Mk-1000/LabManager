@@ -16,12 +16,20 @@
 		{# <p>id: {{ id }}</p> #}
 
 
-		<div id="search2" class="containerOfSearch">
-			<div class="search-container">
-				<i class="search-icon bi bi-search"></i>
-				<input id="searchEquipement" type="text" class="form-control" placeholder="Search">
-			</div>
+<div class="containerOfSearch">
+		<div class="search-container">
+			<form method="GET" action="{{ path('app_publication_index') }}">
+				<input type="text" name="search" class="form-control" placeholder="Search" value="{{ app.request.query.get('search') }}">
+				<button class="btn btn-outline-success" type="submit"><i class="search-icon bi bi-search"></i>Search</button>
+			</form>
 
+		</div>
+
+		<!-- Other container elements -->
+	</div>
+
+	{% set isAdmin = app.session.get('isAdmin') %}
+	{% if isAdmin == false  %}
 			<div class="button-container">
 				<a href="{{ path('app_equipment_new') }}">
 					<button type="button">
@@ -29,10 +37,8 @@
 					</button>
 				</a>
 			</div>
-
-
-		</div>
-
+	{% endif %}
+	
             <div class="equipemetns" >
 
 				{% for equipment in equipment %}

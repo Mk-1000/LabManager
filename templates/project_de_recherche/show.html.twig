@@ -107,6 +107,11 @@ div .flash:hover{
 		{# <p>id: {{ id }}</p> #}
 		{{ include('project_de_recherche/_delete_form.html.twig') }}
 	{% endif %}
+		{% set isAdmin = app.session.get('isAdmin') %}
+		{% if isAdmin  %}
+			<div>{{ include('project_de_recherche/_delete_form.html.twig') }}</div>
+		{% endif %}
+
 	</div>
 
 

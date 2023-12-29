@@ -14,27 +14,37 @@
     {% if id is defined %}
         {# <p>id: {{ id }}</p> #}
 
-	<div id="search1" class="containerOfSearch">
+
+		<div class="containerOfSearch">
 		<div class="search-container">
-			<i class="search-icon bi bi-search"></i>
-			<input id="searchPublication" type="text" class="form-control" placeholder="Search">
-		</div>
-		<div class="button-container">
-			<a href="{{ path('app_project_de_recherche_new') }}">
-				<button type="button">
-					<i class="bi bi-plus"></i>
-				</button>
-			</a>
+			<form method="GET" action="{{ path('app_publication_index') }}">
+				<input type="text" name="search" class="form-control" placeholder="Search" value="{{ app.request.query.get('search') }}">
+				<button class="btn btn-outline-success" type="submit"><i class="search-icon bi bi-search"></i>Search</button>
+			</form>
 
 		</div>
+
+		<!-- Other container elements -->
 	</div>
+  	{% set isAdmin = app.session.get('isAdmin') %}
+	{% if isAdmin == false  %}
+			<div class="button-container">
+				<a href="{{ path('app_project_de_recherche_new') }}">
+					<button type="button">
+						<i class="bi bi-plus"></i>
+					</button>
+				</a>
+			</div>
+	{% endif %}
+			
 
 	<div
 		class="projects">
 		<!-- ... previous HTML code ... -->
+		{% set isAdmin = app.session.get('isAdmin') %}
 
 		{% for project_de_recherche in project_de_recherches %}
-		  {% if id ==  project_de_recherche.chercheur.getId()%}
+		  {% if id ==  project_de_recherche.chercheur.getId() or isAdmin %}
       	<a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">
 
         <div class="card" style="width: 18rem;">

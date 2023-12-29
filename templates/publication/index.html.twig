@@ -58,13 +58,17 @@
 
 		<!-- Other container elements -->
 	</div>
+	{% set isAdmin = app.session.get('isAdmin') %}
+	{% if isAdmin == false  %}
 			<div class="button-container">
 				<a href="{{ path('app_publication_new') }}">
 					<button type="button">
 						<i class="bi bi-plus"></i>
 					</button>
 				</a>
-			</div>	
+			</div>
+	{% endif %}
+			
 
 			<div class="publications">
 				{% for publication in publications %}

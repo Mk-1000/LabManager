@@ -1,3 +1,7 @@
+.cont{
+    display: flex;
+    gap: 50px;
+  }
 .form-control{
     width:50%;
     border: 1.5px;

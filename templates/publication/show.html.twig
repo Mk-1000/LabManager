@@ -1,58 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Publication{% endblock %}
+{% block title %}Publication
+{% endblock %}
 
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/show.css')}}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 
+	<div class="cont">
+		<h4>Detail de Publication</h4>
+		{% set isAdmin = app.session.get('isAdmin') %}
+		{% if isAdmin  %}
+			<div>{{ include('publication/_delete_form.html.twig') }}</div>
+		{% endif %}
+	</div>
 
-    <h4>Detail de Publication</h4>
 
-   <table class="publication-table">
-   <thead>
-        <tr>
-            <th>Attribute</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-        <tbody>
-            <tr>
-                <th>Titre de Publication</th>
-                <td>{{ publication.titre }}</td>
-            </tr>
-            <tr>
-                <th>Nom de Projet </th>
-                <td><a style='color: #3559E0;' href="{{ path('app_project_de_recherche_show', {'id': publication.ProjectDeRecherche.id}) }}">{{ publication.ProjectDeRecherche.getTitre()}} </a></td>
-            </tr>
-            <tr>
-                <th>description de projet</th>
-                <td>{{ publication.ProjectDeRecherche.getDescription() }}</td>
-            </tr>
-            <tr>
-                <th>Auteurs</th>
-                <td>{{ publication.auteurs }}</td>
-            </tr>
-            <tr>
-                <th>MotsCles</th>
-                <td>{{ publication.motsCles }}</td>
-            </tr>
+	<table class="publication-table">
+		<thead>
+			<tr>
+				<th>Attribute</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Titre de Publication</th>
+				<td>{{ publication.titre }}</td>
+			</tr>
+			<tr>
+				<th>Nom de Projet
+				</th>
+				<td>
+					<a style='color: #3559E0;' href="{{ path('app_project_de_recherche_show', {'id': publication.ProjectDeRecherche.id}) }}">{{ publication.ProjectDeRecherche.getTitre()}}
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th>description de projet</th>
+				<td>{{ publication.ProjectDeRecherche.getDescription() }}</td>
+			</tr>
+			<tr>
+				<th>Auteurs</th>
+				<td>{{ publication.auteurs }}</td>
+			</tr>
+			<tr>
+				<th>MotsCles</th>
+				<td>{{ publication.motsCles }}</td>
+			</tr>
 
-                        <tr>
-                <th>Equipement utilisé</th>
-                <td>
-                {% for equipment in publication.ProjectDeRecherche.getEquipments() %}
-                    <a style='color: #3559E0;' href="{{ path('app_equipment_show', {'id': equipment.id}) }}">{{ equipment.nom }} </a>,
-                {% endfor %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+			<tr>
+				<th>Equipement utilisé</th>
+				<td>
+					{% for equipment in publication.ProjectDeRecherche.getEquipments() %}
+						<a style='color: #3559E0;' href="{{ path('app_equipment_show', {'id': equipment.id}) }}">{{ equipment.nom }}
+						</a>,
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-    {# <a href="{{ path('app_publication_index') }}">back to list</a>
-    
-    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a> #}
+	{# <a href="{{ path('app_publication_index') }}">back to list</a>
+	    
+	    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a> #}
 
-    {# {{ include('publication/_delete_form.html.twig') }} #}
+	{# {{ include('publication/_delete_form.html.twig') }} #}
 {% endblock %}
+

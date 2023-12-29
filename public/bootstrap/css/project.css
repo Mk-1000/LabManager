@@ -1,78 +1,100 @@
-        /* Styles for the container */
-        .containerOfSearch  {
-            width: 600px;
-            height: 48px;
-            display: flex;
-            justify-content: space-between; /* Distribute space between elements */
-            align-items: center; /* Center items vertically */
-            margin: 0 auto; /* Center the container horizontally */
-        }
-        a {
-            text-decoration: none !important;
-        }
-        /* Styles for the search input */
-        .search-container {
+    /* Styles for the container */
+    .containerOfSearch {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 10px;
 
-            width: 85%;
-            height: 50px;
-            position: relative;
-            display: flex;
-            align-items: center; /* Vertically align items */
-            border: 1.5px;
-            border-radius: 10px;
-            padding-left: 40px; /* Adjust this based on the icon width */
-            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
-            background-color : white;
+    }
 
-        }
-        button a{
-            text-align: none;
-            text-decoration: none;
+    /* Styles for the search input */
+    input.form-control {
+        flex: 1;
+        height: 48px;
+        max-width: 100%;
+        min-width: 300px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        /* Add margin between elements */
+        padding: 12px;
+        /* Adjust padding for better input appearance */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        /* Increase font size for better readability */
+        box-shadow: none;
+        /* Remove box shadow for input */
+    }
+/* Styles for the search icon button */
+button[type="submit"] {
+    margin-left: 100px;
+    height: 48px;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
 
-        }
+}
 
-        #searchPublication {
-            border: 1.5px solid transparent; /* Set a transparent border */
-            outline: none; /* Remove the default focus outline */
-            box-shadow: 0 0 0 2px #ffff; /* Add a subtle box-shadow on focus */
-        }
-    
 
-        /* Styles for the search icon */
-        .search-icon {
-            color: #66BB69; /* Set the text color to green */
-            position: absolute;
-            left: 10px; /* Adjust icon positioning */
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1; /* Ensure the icon is above the input field */
-        }
-        .containerOfSearch button:hover {
-            background-color: #A5D6A7;
-            /* Change background color on hover */
-            color: white;
-            /* Change text color on hover */
-        }
-        .containerOfSearch button:active {
-            background-color: #66BB69;
-            /* Change background color on click/selection */
-            color: white;
-            /* Change text color on click/selection */
-        }
 
-        .button-container button {
-            height: 48px;
-            width: 48px;
-            border: none;
-            border-radius: 60px;
-            background-color: #FFFFFF;
-            box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
-            display: flex; /* Enable flex properties */
-            justify-content: center; /* Horizontally center the icon within the button */
-            align-items: center; /* Vertically center the icon within the button */
-            color: #66BB69; /* Set the text color to green */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
-        }
+/* Styles for the button container */
+.button-container {
+    display: flex;
+    margin-top: 40px;
+    margin-right: 10%;
+    justify-content: right;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+}
+
+/* Styles for the button */
+.button-container button {
+    height: 48px;
+    width: 48px;
+    border: none;
+    border-radius: 60px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    display: flex;
+    /* Enable flex properties */
+    justify-content: center;
+    /* Horizontally center the icon within the button */
+    align-items: center;
+    /* Vertically center the icon within the button */
+    color: #66BB69;
+    /* Set the text color to green */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for color change */
+}
+
+.containerOfSearch button:hover {
+    background-color: #A5D6A7;
+    /* Change background color on hover */
+    color: white;
+    /* Change text color on hover */
+}
+
+.containerOfSearch button:active {
+    background-color: #66BB69;
+    /* Change background color on click/selection */
+    color: white;
+    /* Change text color on click/selection */
+}
+
+
+    /* Styles for the button container */
+    .button-container {
+        display: flex;
+        margin-top: 40px;
+        margin-right: 10%;
+        justify-content: right;
+        /* Horizontally center the content */
+        align-items: center;
+        /* Vertically center the content */
+    }
+
 
         .container button:hover {
             background-color: #A5D6A7; /* Change background color on hover */
@@ -247,3 +269,6 @@
             transition: stroke-dasharray 1s ease 0s, stroke-dashoffset 1s ease 0s;
           }
           
+          a {
+            text-decoration: none !important;
+        }
