@@ -17,7 +17,7 @@
 		{# <p>id: {{ id }}</p> #}
 
 
-		<div id="search1" class="containerOfSearch">
+		{# <div id="search1" class="containerOfSearch">
 			<div class="search-container">
 				<i class="search-icon bi bi-search"></i>
 				<input id="searchPublication" type="text" class="form-control" placeholder="Search">
@@ -38,9 +38,33 @@
 					</button>
 				</a>
 			</div>
+		</div> #}
 
+		
+		<div class="containerOfSearch">
+		<div class="search-container">
+			<form method="GET" action="{{ path('app_publication_index') }}">
+				<input type="text" name="search" class="form-control" placeholder="Search" value="{{ app.request.query.get('search') }}">
+				<select name="searchBy">
+					<option value="titre">Titre</option>
+					<option value="auteurs">Auteur</option>
+					<option value="motsCles">Mots-cles</option>
+					<!-- Add more options for other fields -->
+				</select>
+				<button class="btn btn-outline-success" type="submit"><i class="search-icon bi bi-search"></i>Search</button>
+			</form>
 
 		</div>
+
+		<!-- Other container elements -->
+	</div>
+			<div class="button-container">
+				<a href="{{ path('app_publication_new') }}">
+					<button type="button">
+						<i class="bi bi-plus"></i>
+					</button>
+				</a>
+			</div>	
 
 			<div class="publications">
 				{% for publication in publications %}

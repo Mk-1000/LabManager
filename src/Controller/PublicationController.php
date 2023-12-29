@@ -18,17 +18,29 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\session;
 class PublicationController extends AbstractController
 {
     #[Route('/', name: 'app_publication_index', methods: ['GET'])]
-    public function index(PublicationRepository $publicationRepository, SessionInterface $session): Response
+    public function index(Request $request, PublicationRepository $publicationRepository, SessionInterface $session): Response
     {
-
         $id = $session->get('currentUserId');
 
-    if (!$id) {
-        return $this->redirectToRoute('app_homepage');
-    }
-    
+        if (!$id) {
+            return $this->redirectToRoute('app_homepage');
+        }
+
+        $searchTerm = $request->query->get('search');
+        $searchBy = $request->query->get('searchBy');
+
+        $publications = [];
+
+        if ($searchTerm && $searchBy) {
+            // Use the custom method defined in the repository
+            $publications = $publicationRepository->findByCustomSearch($searchTerm, $searchBy);
+        } else {
+            // If no search term or criteria, fetch all publications
+            $publications = $publicationRepository->findAll();
+        }
+
         return $this->render('publication/index.html.twig', [
-            'publications' => $publicationRepository->findAll(),
+            'publications' => $publications,
         ]);
     }
 
