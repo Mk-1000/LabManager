@@ -10,7 +10,13 @@ body {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between; /* Creates space between elements */
+  align-items: center; /* Centers elements vertically */
+  /* Additional styles */
+  width: 100%;
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* Centers the container horizontally */
+  gap:30px;
 }
 
 .signup-form {
@@ -47,7 +53,11 @@ input[type="submit"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
+.error {
+  color: red; /* Or any other color you prefer for error messages */
+  margin-top: 10px; /* Adjust as needed for spacing */
+  /* Other styles for error message */
+}
 
 button {
   background-color: #007bff;
@@ -60,6 +70,8 @@ button {
   border: none;
   width:30%;
   margin-left:35%;
+  margin-top:20px;
+
 }
 button:hover {
     background-color: #A5D6A7;
@@ -69,6 +81,7 @@ button:hover {
 }
 
 .image-container {
+  max-width: 500px;
   flex: 1 1 40%; /* Half of the container width */
   overflow: hidden;
   text-align: center;
@@ -103,25 +116,7 @@ button:hover {
 {% block content %}
 <div class="container">
 
-     {# <form action="#" method="POST" class="signup-form">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <button type="submit"><i class="bi bi-box-arrow-in-right"> </i>LogIn</button>
-      </div>
-    </form> #}
-    
-    {# templates/security/login.html.twig #}
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
     <form method="post" action="{{ path('app_login') }}">
         <label for="email">Email:</label>
@@ -129,6 +124,10 @@ button:hover {
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="_password" required>
+
+        {% if error %}
+            <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
         <button type="submit">Sign In</button>
     </form>
