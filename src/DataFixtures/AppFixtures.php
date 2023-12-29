@@ -12,18 +12,33 @@ use App\Entity\ProjectDeRecherche;
 
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
 {
+   private UserPasswordHasherInterface $passwordHasher;
+   public function __construct(UserPasswordHasherInterface $passwordHasher)
+   {
+       $this->passwordHasher = $passwordHasher;
+   }
+
    public function load(ObjectManager $manager)
    {
 
       $admin = new Admin();
 
       $admin->setEmail("admin@admin.com");
-      $admin->setPassword("admin");
-      
+      $plaintextPassword= "admin";
+
+      // hash the password (based on the security.yaml config for the $user class)
+      $hashedPassword = $this->passwordHasher->hashPassword(
+         $admin,
+         $plaintextPassword
+      );
+
+      $admin->setPassword($hashedPassword);
+
       $manager->persist($admin);
 
 
@@ -32,12 +47,18 @@ class AppFixtures extends Fixture
 
        $chercheurs = [];
 
-       for ($i = 0; $i < 5; $i++) {
+       for ($i = 1; $i < 6; $i++) {
            $chercheur = new Chercheur();
            $chercheur->setNom($faker->lastName);
            $chercheur->setPrenom($faker->firstName);
-           $chercheur->setEmail($faker->email);
-           $chercheur->setMotDePasse($faker->password);
+           $chercheur->setEmail("chercheur".$i."@gmail.com");
+           $plaintextPassword= "chercheur";
+            // // hash the password (based on the security.yaml config for the $user class)
+            // $hashedPassword = $this->passwordHasher->hashPassword(
+            //    $admin,
+            //    $plaintextPassword
+            // );
+           $chercheur->setMotDePasse($plaintextPassword);
 
            $randomRole = $roles[array_rand($roles)];
            $chercheur->setRole($randomRole);

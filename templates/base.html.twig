@@ -35,6 +35,12 @@
 							{# Use responsive utility classes to always show the navigation #}
 							<div class="links collapse navbar-collapse show" id="navbarNav">
 								<ul class="navbar-nav">
+									{% set isAdmin = app.session.get('isAdmin') %}
+									{% if isAdmin is defined and isAdmin %}
+									<li class="nav-item">
+										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_publication_index' %}active{% endif %}" href="{{ path('app_chercheur_index') }}">Chercheur</a>
+									</li>
+									{% endif %}
 									<li class="nav-item">
 										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_publication_index' %}active{% endif %}" href="{{ path('app_publication_index') }}">Publication</a>
 									</li>
@@ -48,6 +54,22 @@
 							</div>
 
 							<div>
+							{% if isAdmin %}
+									<div class="poopover-container">
+										<button type="button" class="btn btn-outline-success" id="poopoverButton"><i class="bi bi-person-gear"></i></button>
+										<div class="poopover-options">
+											<a>
+												<div class="option">
+													<a class="nav-link" href="{{ path('app_logout') }}">
+														<i class="bi bi-box-arrow-left"></i>
+														<span>Logout</span>
+													</a>
+												</div>
+											</a>
+										</div>
+									</div>
+							{% else %}
+						
 								{# Check if user details are available #}
 								{% set nom = app.session.get('currentUserNom') %}
 								{% set prenom = app.session.get('currentUserPrenom') %}
@@ -80,6 +102,7 @@
 											</a>
 										</div>
 									</div>
+								{% endif %}
 								{% endif %}
 							</div>
 						{% else %}

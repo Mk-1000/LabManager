@@ -133,9 +133,33 @@ class Chercheur
         return $this;
     }
 
-    public static function findChercheurById(EntityManagerInterface $entityManager, int $id): ?Chercheur
-    {
-        return $entityManager->getRepository(Chercheur::class)->find($id);
+    public static function chercheurSignInCheck(
+        string $enteredEmail,
+        string $enteredPassword,
+        EntityManagerInterface $entityManager
+    ): ?Chercheur {
+        $chercheurRepository = $entityManager->getRepository(Chercheur::class);
+    
+        // Find the chercheur by email
+        $chercheur = $chercheurRepository->findOneBy(['email' => $enteredEmail]);
+    
+        if (!$chercheur) {
+            return null; // If chercheur not found, return null
+        }
+    
+        // Verify the password
+        if ($enteredPassword == $chercheur->getMotDePasse()) {
+            return $chercheur; // Password verified, return the Chercheur entity
+        }
+    
+        return null; // If password doesn't match, return null
     }
+    
+    
+
+    // public static function findChercheurById(EntityManagerInterface $entityManager, int $id): ?Chercheur
+    // {
+    //     return $entityManager->getRepository(Chercheur::class)->find($id);
+    // }
 
 }
