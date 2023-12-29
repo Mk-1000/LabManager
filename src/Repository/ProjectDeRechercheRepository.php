@@ -20,7 +20,15 @@ class ProjectDeRechercheRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ProjectDeRecherche::class);
     }
-
+    public function findByTitre($searchTerm)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.titre LIKE :searchTerm')
+            ->setParameter('searchTerm', '%' . $searchTerm . '%')
+            ->getQuery()
+            ->getResult();
+    }
+    
 //    /**
 //     * @return ProjectDeRecherche[] Returns an array of ProjectDeRecherche objects
 //     */

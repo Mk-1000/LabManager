@@ -17,7 +17,7 @@
 
 		<div class="containerOfSearch">
 		<div class="search-container">
-			<form method="GET" action="{{ path('app_publication_index') }}">
+			<form method="GET" action="{{ path('app_project_de_recherche_index') }}">
 				<input type="text" name="search" class="form-control" placeholder="Search" value="{{ app.request.query.get('search') }}">
 				<button class="btn btn-outline-success" type="submit"><i class="search-icon bi bi-search"></i>Search</button>
 			</form>

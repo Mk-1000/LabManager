@@ -20,6 +20,14 @@ class EquipmentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Equipment::class);
     }
+    public function findByTitre($searchTerm)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.nom LIKE :searchTerm')
+            ->setParameter('searchTerm', '%' . $searchTerm . '%')
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return Equipment[] Returns an array of Equipment objects

@@ -15,12 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class EquipmentController extends AbstractController
 {
     #[Route('/', name: 'app_equipment_index', methods: ['GET'])]
-    public function index(EquipmentRepository $equipmentRepository): Response
-    {
-        return $this->render('equipment/index.html.twig', [
-            'equipment' => $equipmentRepository->findAll(),
-        ]);
+    public function index(Request $request, EquipmentRepository $EquipmentRepository): Response
+{
+    $searchTerm = $request->query->get('search');
+    $equipment = [];
+
+    if ($searchTerm) {
+        $equipment = $EquipmentRepository->findByTitre($searchTerm);
+    } else {
+        $equipment = $EquipmentRepository->findAll();
     }
+
+    return $this->render('equipment/index.html.twig', [
+        'equipment' => $equipment,
+    ]);
+}
 
     #[Route('/new', name: 'app_equipment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

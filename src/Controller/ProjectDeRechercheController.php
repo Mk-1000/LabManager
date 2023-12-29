@@ -16,10 +16,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProjectDeRechercheController extends AbstractController
 {
     #[Route('/', name: 'app_project_de_recherche_index', methods: ['GET'])]
-    public function index(ProjectDeRechercheRepository $projectDeRechercheRepository): Response
+    public function index(Request $request, ProjectDeRechercheRepository $projectDeRechercheRepository): Response
     {
+        $searchTerm = $request->query->get('search');
+        $projects = [];
+    
+        if ($searchTerm) {
+            $projects = $projectDeRechercheRepository->findByTitre($searchTerm);
+        } else {
+            $projects = $projectDeRechercheRepository->findAll();
+        }
+    
         return $this->render('project_de_recherche/index.html.twig', [
-            'project_de_recherches' => $projectDeRechercheRepository->findAll(),
+            'project_de_recherches' => $projects,
         ]);
     }
 
