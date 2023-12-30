@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Equipment;
+
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ChercheurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,9 +35,13 @@ class Chercheur
     #[ORM\OneToMany(mappedBy: 'chercheur', targetEntity: ProjectDeRecherche::class, orphanRemoval: true)]
     private Collection $projects;
 
+    #[ORM\OneToMany(mappedBy: 'chercheur', targetEntity: equipment::class)]
+    private Collection $equipments;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,5 +167,35 @@ class Chercheur
     // {
     //     return $entityManager->getRepository(Chercheur::class)->find($id);
     // }
+
+    /**
+     * @return Collection<int, equipment>
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(equipment $equipment): static
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments->add($equipment);
+            $equipment->setChercheur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(equipment $equipment): static
+    {
+        if ($this->equipments->removeElement($equipment)) {
+            // set the owning side to null (unless already changed)
+            if ($equipment->getChercheur() === $this) {
+                $equipment->setChercheur(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

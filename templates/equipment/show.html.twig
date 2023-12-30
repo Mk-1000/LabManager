@@ -8,12 +8,28 @@
 
 	<div class="cont">
 		<h4>Detail d'Equipment</h4>
-        <a class="btn btn-outline-warning" href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">Utiliser l'équipement</a>
+
+        {% if   not equipment.etat  %}
+            <a class="btn btn-outline-success" href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">Utiliser l'équipement</a>
+        {% endif %}
 
 		{% set isAdmin = app.session.get('isAdmin') %}
 		{% if isAdmin  %}
 			<div>{{ include('equipment/_delete_form.html.twig') }}</div>
 		{% endif %}
+        
+        {# Retrieve session variables in Twig #}
+        {% set id = app.session.get('currentUserId') %}
+
+        {# Display the values if they exist #}
+        {% if equipment.projectDeRecherche.chercheur.getId() is defined %}
+            {# <p>id: {{ id }}</p> #}
+
+            {% if id ==  equipment.projectDeRecherche.chercheur.getId()  %}
+                <a class="btn btn-outline-warning" href="{{ path('app_equipment_edit', {'id': equipment.id}) }}">edit</a>
+            {% endif %}
+
+        {% endif %}
 	</div>
 
     <table class="table">
@@ -33,9 +49,25 @@
                 <td>{{ equipment.nom }}</td>
             </tr>
             <tr>
-                <th>Etat</th>
-                <td>{{ equipment.etat ? 'Yes' : 'No' }}</td>
+                <th>Ajouter par</th>
+                <td>{{ equipment.chercheur.getNom }} {{ equipment.chercheur.getPrenom  }}</td>
             </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ equipment.etat ? 'Non disponible' : 'Disponible' }}</td>
+            </tr>
+
+            {% if   equipment.etat  %}
+            <tr>
+                <th>Utiliser par</th>
+                <td>{{  equipment.projectDeRecherche.chercheur.getNom() }} {{  equipment.projectDeRecherche.chercheur.getPrenom() }}</td>
+            </tr>
+            <tr>
+                <th>projet concerné</th>
+                <td>{{  equipment.projectDeRecherche.getTitre() }}</td>
+            </tr>
+            {% endif %}
+
         </tbody>
     </table>
 

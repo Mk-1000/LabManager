@@ -21,8 +21,12 @@ class Equipment
     private ?bool $etat = null;
 
     #[ORM\ManyToOne(inversedBy: 'equipments')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?ProjectDeRecherche $projectDeRecherche = null;
+
+    #[ORM\ManyToOne(inversedBy: 'equipments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Chercheur $chercheur = null;
 
     public function getId(): ?int
     {
@@ -64,4 +68,34 @@ class Equipment
 
         return $this;
     }
+
+    public function getChercheur(): ?Chercheur
+    {
+        return $this->chercheur;
+    }
+
+    public function setChercheur(?Chercheur $chercheur): static
+    {
+        $this->chercheur = $chercheur;
+
+        return $this;
+    }
+    public function useEquipment(ProjectDeRecherche $newProject): bool
+    {
+        $updated = false; // Initialize the variable to track updates
+    
+        // If the state is false or null, change it to true
+        if ($this->etat === false || $this->etat === null) {
+            $this->etat = true;
+            $updated = true; // Set as updated
+        }
+    
+        // Change the projectDeRecherche
+        $this->projectDeRecherche = $newProject;
+    
+        // Return the flag indicating if updates were made
+        return $updated;
+    }
+    
+
 }

@@ -63,6 +63,22 @@ class AppFixtures extends Fixture
            $randomRole = $roles[array_rand($roles)];
            $chercheur->setRole($randomRole);
            
+            $equipments = [];
+
+            for ($k = 0; $k < 10; $k++) {
+               $equipment = new Equipment();
+               $equipment->setNom('Equipment ' . $i.$k);
+               $equipment->setEtat(false);
+               $equipment->setChercheur($chercheur);
+
+               $equipments[] = $equipment;
+               $manager->persist($equipment);
+            }
+            
+            foreach ($equipments as $equipment) {
+               $chercheur->addEquipment($equipment);
+            }
+            
            $projects = [];
            $numProjects = random_int(0, 5);
 
@@ -91,22 +107,19 @@ class AppFixtures extends Fixture
                   $projet->addPublication($publication);
                }
 
-               $equipments = [];
                $numEquipments = random_int(0, 10);
 
-               for ($k = 0; $k < $numEquipments; $k++) {
-                  $equipment = new Equipment();
-                  $equipment->setNom('Equipment ' . $i.$k);
-                  $equipment->setEtat(true);
-                  $equipment->setProjectDeRecherche($projet);
-
-                  $equipments[] = $equipment;
-                  $manager->persist($equipment);
-               }
-
-               foreach ($equipments as $equipment) {
-                  $projet->addEquipment($equipment);
-               }
+               // Assuming $equipments is an array or collection of Equipment instances
+               for ($k = 0; $k < min($numEquipments, count($equipments)); $k++) {
+                  $equipment = $equipments[$k]; // Access the equipment at index $k
+                  $verif = $equipment->useEquipment($projet);
+              
+                  if ($verif) {
+                      $projet->addEquipment($equipment);
+                  }
+              }
+              
+               
 
                $projects[] = $projet;
                $manager->persist($projet);

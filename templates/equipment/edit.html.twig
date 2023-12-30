@@ -35,7 +35,16 @@
     <div class="content form">
     <div class="cont" >
     <h4>Edit Equipment</h4>
+	{# Retrieve session variables in Twig #}
+	{% set id = app.session.get('currentUserId') %}
+
+	{# Display the values if they exist #}
+	{% if id is defined and id == equipment.chercheur.getId() %}
+		{# <p>id: {{ id }}</p> #}
+
     {{ include('equipment/_delete_form.html.twig') }}
+
+    {% endif %}
     </div>
     {{ include('equipment/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 

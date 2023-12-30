@@ -44,13 +44,7 @@
 				{% for equipment in equipment %}
 					<div class="card">
 
-						{% if id ==  equipment.projectDeRecherche.chercheur.getId()%}
-							<a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">
-
-							{% else %}
 								<a href="{{ path('app_equipment_show', {'id': equipment.id}) }}">
-
-								{% endif %}
 
 								<div class="title-content">
 									<h6>{{ equipment.nom }}</h6>

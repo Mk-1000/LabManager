@@ -34,6 +34,7 @@ class EquipmentType extends AbstractType
                 'label' => "l'équipement sera utilisé dans quel projet",
                 'choice_label' => 'titre',
                 'placeholder' => 'Select Project',
+                'required' => false, // Make the field not required
                 'query_builder' => function (EntityRepository $er) use ($currentUserId) {
                     return $er->createQueryBuilder('p')
                         ->leftJoin('p.chercheur', 'c')

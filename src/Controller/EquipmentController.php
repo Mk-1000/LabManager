@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Chercheur;
 use App\Entity\Equipment;
 use App\Form\EquipmentType;
 use App\Repository\EquipmentRepository;
@@ -39,12 +40,15 @@ class EquipmentController extends AbstractController
         $currentUserId = $session->get('currentUserId');
 
         $equipment = new Equipment();
-
+        $chercheur = $entityManager->getRepository(Chercheur::class)->find($currentUserId); // Fetch Chercheur with $currentUserId
+        $equipment->setChercheur($chercheur); // Set Chercheur for ProjectDeRecherche
+    
         // Create the form and pass the current user ID as an option
         $form = $this->createForm(EquipmentType::class, $equipment, [
             'current_user_id' => $currentUserId,
         ]);
 
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
