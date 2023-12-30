@@ -3,12 +3,32 @@
 {% block title %}New ProjectDeRecherche{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_proj.css')}}" rel="stylesheet">
+    <style>
+    .form.container h1 {
+         /* Adjust the margin as needed */
+        margin-top:3px;
+    }
+
+    .form.container button {
+        
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:5px;
+        margin-bottom:auto;
+    }
+    .form-control{
+        min-width:370px;
+    }
+     label{
+        margin-right:8px;
+        
+    } 
+</style>
 {% endblock %}
 
 {% block content %}
 <div class='form container' >
     <h1>Create new ProjectDeRecherche</h1>
-
     {{ include('project_de_recherche/_form.html.twig') }}
 
     {# <a href="{{ path('app_project_de_recherche_index') }}">back to list</a> #}

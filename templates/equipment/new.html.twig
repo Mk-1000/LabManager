@@ -4,6 +4,32 @@
 
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_equip.css')}}" rel="stylesheet">
+    <style>
+    .content.form h1 {
+       
+        margin-top:37px;
+    }
+
+    .content.form button {
+        
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:37px;
+        margin-bottom:auto;
+    }
+    #del{
+        {# float: inline-end; #}
+        margin-left:10px;
+        {# margin-right:360px; #}
+        
+    }
+    .form-control{
+        min-width:370px;
+    }
+    label{
+        margin-right:8px;
+    }
+</style>
 {% endblock %}
 {% block content %}
     <div class="content form">

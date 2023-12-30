@@ -3,6 +3,26 @@
 {% block title %}New Publication{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_publication.css')}}" rel="stylesheet">
+     <style>
+    .form.container h1 {
+        
+        margin-top:35px;
+    }
+
+    .form.container button {
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:35px;
+        margin-bottom:auto;
+    }
+    .form-control{
+        min-width:370px;
+    }
+     label{
+        margin-right:8px;
+        margin-top:4px
+    } 
+</style>
 {% endblock %}
 {% block content%}
 <div class='form container' >

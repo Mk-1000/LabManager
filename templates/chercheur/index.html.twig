@@ -2,7 +2,7 @@
 
 {% block title %}Chercheur index{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Chercheur index</h1>
 
     <table class="table">
@@ -27,8 +27,9 @@
                 <td>{{ chercheur.motDePasse }}</td>
                 <td>{{ chercheur.role }}</td>
                 <td>
-                    <a href="{{ path('app_chercheur_show', {'id': chercheur.id}) }}">show</a>
-                    <a href="{{ path('app_chercheur_edit', {'id': chercheur.id}) }}">edit</a>
+                    <a href="{{ path('app_chercheur_show', {'id': chercheur.id}) }}"><button class='btn btn-outline-success'> show</button> </a>
+                    {# <a href="{{ path('app_chercheur_edit', {'id': chercheur.id}) }}">edit</a> #}
+                    <a href="{{ path('app_chercheur_delete', {'id': chercheur.id}) }}"><button class='btn btn-outline-danger'> <i class="bi bi-trash-fill"></i> supprimer</button></a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_chercheur_new') }}">Create new</a>
+    {# <a href="{{ path('app_chercheur_new') }}">Create new</a> #}
 {% endblock %}

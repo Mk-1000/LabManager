@@ -5,10 +5,13 @@
     display: flex;
     box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
     margin-bottom:24px;
+    
 }
-h1{
+h4{
     margin-bottom: 24px;
+    margin-top: 30px;
 }
+
 #bout{
     margin-top: 24px;
 }
@@ -24,17 +27,13 @@ select {
     /* Change the text color of the options */
 
 }
-.form{
-    align-items: center;
-    position: absolute;
-    top: 30%;
-    margin-left: 30%;
-    width:50%;
-    /* margin: 44px; */
-    /* display: flex;
-            flex-wrap: wrap; */
-            /* gap: 20px; */
-            justify-content: center;
+.form {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin: 10% auto; /* 30% from the top, auto horizontally */
+    padding: 20px; /* Optional padding for better visual appearance */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 a{

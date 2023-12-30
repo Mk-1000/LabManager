@@ -38,7 +38,7 @@
 									{% set isAdmin = app.session.get('isAdmin') %}
 									{% if isAdmin is defined and isAdmin %}
 									<li class="nav-item">
-										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_publication_index' %}active{% endif %}" href="{{ path('app_chercheur_index') }}">Chercheur</a>
+										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_chercheur_index' %}active{% endif %}" href="{{ path('app_chercheur_index') }}">Chercheur</a>
 									</li>
 									{% endif %}
 									<li class="nav-item">

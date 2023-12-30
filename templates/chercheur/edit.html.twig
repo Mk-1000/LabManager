@@ -3,6 +3,32 @@
 {% block title %}Edit Chercheur{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_publication.css')}}" rel="stylesheet">
+<style>
+
+    .form h3 {
+        margin-top:32px;
+    }
+
+    .form button {
+        float:left;
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:37px;
+        margin-bottom:auto;
+    }
+    .form-control{
+        min-width:370px;
+        
+        
+    }
+    .form-control:last-child{
+        margin-bottom:10px;
+    }
+    label{
+        margin-top:3px;
+        margin-right:8px;
+    }
+</style>
 {% endblock %}
 {% block content %}
     <div class='form container' >

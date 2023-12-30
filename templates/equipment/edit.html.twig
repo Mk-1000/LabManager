@@ -3,15 +3,44 @@
 {% block title %}Edit Equipment{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_equip.css')}}" rel="stylesheet">
+    <style>
+    .content.form h4 {
+        float:left; /* Adjust the margin as needed */
+        margin-top:30px;
+    }
+    .cont{
+    display: flex;
+    }
+    .content.form button {
+        
+    }
+    #del{
+    
+        margin-left:10px;
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:30px;
+        margin-bottom:auto;
+        
+    }
+    .form-control{
+        min-width:370px;
+    }
+    label{
+        margin-right:8px;
+    }
+</style>
 {% endblock %}
 {% block content %}
     <div class="content form">
+    <div class="cont" >
     <h4>Edit Equipment</h4>
-
-    {{ include('equipment/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('equipment/_delete_form.html.twig') }}
+    </div>
+    {{ include('equipment/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
     {# <a href="{{ path('app_equipment_index') }}">back to list</a> #}
 
-    {{ include('equipment/_delete_form.html.twig') }}
+    
     </div>
 {% endblock %}

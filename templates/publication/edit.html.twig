@@ -3,15 +3,31 @@
 {% block title %}Edit Publication{% endblock %}
 {% block addSstylesheets %}
 	<link href="{{asset('bootstrap/css/add_publication.css')}}" rel="stylesheet">
+    <style>
+    #del{
+    
+        margin-left:10px;
+        margin-left: 10px; /* Adjust the margin as needed */
+        margin-right:auto;
+        margin-top:30px;
+        margin-bottom:auto;
+        
+    }
+    .cont{
+    display: flex;
+    }
+    </style>
 {% endblock %}
 {% block content %}
 <div class='form container' >
+    <div class='cont'>
     <h4>Edit Publication</h4>
-
+    {{ include('publication/_delete_form.html.twig') }}
+    </div>
     {{ include('publication/_form.html.twig', {'button_label': 'Update'}) }}
 
     {# <a href="{{ path('app_publication_index') }}">back to list</a> #}
 
-    {{ include('publication/_delete_form.html.twig') }}
+    
 </div>
 {% endblock %}
