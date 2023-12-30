@@ -87,9 +87,15 @@ class PublicationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_publication_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Publication $publication, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Publication $publication, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $form = $this->createForm(PublicationType::class, $publication);
+        // gets an attribute by name
+        $currentUserId = $session->get('currentUserId');
+
+        // Create the form and pass the current user ID as an option
+        $form = $this->createForm(PublicationType::class, $publication, [
+            'current_user_id' => $currentUserId,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

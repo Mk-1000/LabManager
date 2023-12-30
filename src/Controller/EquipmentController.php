@@ -70,9 +70,15 @@ class EquipmentController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_equipment_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Equipment $equipment, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Equipment $equipment, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $form = $this->createForm(EquipmentType::class, $equipment);
+        // gets an attribute by name
+        $currentUserId = $session->get('currentUserId');
+
+        // Create the form and pass the current user ID as an option
+        $form = $this->createForm(EquipmentType::class, $equipment, [
+            'current_user_id' => $currentUserId,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
