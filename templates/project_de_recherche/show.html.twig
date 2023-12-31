@@ -159,14 +159,15 @@ div .flash:hover{
 	<a href="{{ path('app_project_de_recherche_edit', {'id': project_de_recherche.id}) }}">edit</a> #}
 	<br></br>
 	<h4>publications de projet</h4>
-
+{% set publications = project_de_recherche.getPublications() %}
+  {% if publications is not empty %}
     <div class="wrapper">
     <div id="left" class="flash" >
     <i id="left" class="fa-solid fa-angle-left"></i>
     </div>
   <div class="carousel-container">
   <ul class="carousel swiper-container">
-    {% for publication in project_de_recherche.getPublications()%}
+    {% for publication in publications%}
     <li class="card">
       <a href="{{ path('app_publication_show', {'id': publication.id}) }}">
         <div class="title-content">
@@ -198,7 +199,11 @@ div .flash:hover{
   <div id="right" class="flash" >
   <i id="right" class="fa-solid fa-angle-right" ></i>
   </div>
+ 
 </div>
+ {% else %}
+            <h4 style='color:blue;'>Il n'y a pas de publication.</h4>
+    {% endif %}
 
 {% endblock %}
 
