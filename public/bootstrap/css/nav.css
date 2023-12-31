@@ -49,9 +49,11 @@ body {
 .nav-link:hover {
     color: #66BB69;
 }
-.active{
-    color: #66BB69;
+/* Active link styles */
+.nav-item .nav-link.active {
+    color: #4CAF4F;
 }
+
 
 /* Popover Styles */
 .poopover-container {

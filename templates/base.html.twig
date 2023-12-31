@@ -35,23 +35,26 @@
 							{# Use responsive utility classes to always show the navigation #}
 							<div class="links collapse navbar-collapse show" id="navbarNav">
 								<ul class="navbar-nav">
+									{% set activeRoute = app.request.attributes.get('_route') %}
 									{% set isAdmin = app.session.get('isAdmin') %}
-									{% if isAdmin is defined and isAdmin %}
-									<li class="nav-item">
-										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_chercheur_index' %}active{% endif %}" href="{{ path('app_chercheur_index') }}">Chercheur</a>
-									</li>
-									{% endif %}
-									<li class="nav-item">
-										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_publication_index' %}active{% endif %}" href="{{ path('app_publication_index') }}">Publication</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_project_de_recherche_index' %}active{% endif %}" href="{{ path('app_project_de_recherche_index') }}">Projects</a>
-									</li>
-									<li class="nav-item ">
-										<a class="nav-link {% if app.request.attributes.get('_route') == 'app_equipment_index' %}active{% endif %}" href="{{ path('app_equipment_index') }}">Equipment</a>
-									</li>
+
+									{% set routes = {
+										'app_chercheur_index': 'Chercheur',
+										'app_publication_index': 'Publication',
+										'app_project_de_recherche_index': 'Projects',
+										'app_equipment_index': 'Equipment'
+									} %}
+
+									{% for route, label in routes %}
+										{% if (isAdmin is defined and isAdmin) or (route != 'app_chercheur_index') %}
+											<li class="nav-item">
+												<a class="nav-link {% if activeRoute == route %}active{% endif %}" href="{{ path(route) }}">{{ label }}</a>
+											</li>
+										{% endif %}
+									{% endfor %}
 								</ul>
 							</div>
+
 
 							<div>
 							{% if isAdmin %}

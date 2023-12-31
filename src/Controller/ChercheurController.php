@@ -33,7 +33,7 @@ class ChercheurController extends AbstractController
             $entityManager->persist($chercheur);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_chercheur_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('chercheur/new.html.twig', [
@@ -72,10 +72,20 @@ class ChercheurController extends AbstractController
     public function delete(Request $request, Chercheur $chercheur, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$chercheur->getId(), $request->request->get('_token'))) {
+            // Get associated equipments
+            $equipments = $chercheur->getEquipments();
+    
+            // Remove associated equipments
+            foreach ($equipments as $equipment) {
+                $chercheur->removeEquipment($equipment); // Use your Chercheur entity method to remove equipment
+                $entityManager->remove($equipment);
+            }
+    
+            // Now delete the Chercheur entity
             $entityManager->remove($chercheur);
             $entityManager->flush();
         }
-
+    
         return $this->redirectToRoute('app_chercheur_index', [], Response::HTTP_SEE_OTHER);
     }
 }
