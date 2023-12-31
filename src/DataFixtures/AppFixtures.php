@@ -31,7 +31,6 @@ class AppFixtures extends Fixture
       $admin->setEmail("admin@admin.com");
       $plaintextPassword= "admin";
 
-      // hash the password (based on the security.yaml config for the $user class)
       $hashedPassword = $this->passwordHasher->hashPassword(
          $admin,
          $plaintextPassword
@@ -109,9 +108,8 @@ class AppFixtures extends Fixture
 
                $numEquipments = random_int(0, 10);
 
-               // Assuming $equipments is an array or collection of Equipment instances
                for ($k = 0; $k < min($numEquipments, count($equipments)); $k++) {
-                  $equipment = $equipments[$k]; // Access the equipment at index $k
+                  $equipment = $equipments[$k];
                   $verif = $equipment->useEquipment($projet);
               
                   if ($verif) {
