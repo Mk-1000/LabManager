@@ -1,11 +1,111 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Chercheur{% endblock %}
+{% block addSstylesheets %}
+<style>
+body {
+  margin: 0;
+}
 
-{% block body %}
-    <h1>Create new Chercheur</h1>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    {{ include('chercheur/_form.html.twig') }}
+form {
+  flex: 1 1 40%; /* Half of the container width */
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+  border-radius: 25px;
+  width:fit-content;
+  margin-right:10px;
 
-    <a href="{{ path('app_chercheur_index') }}">back to list</a>
+}
+
+form div {
+  margin-bottom: 30px;
+  width:100%;
+   
+}
+.form-group:last-child{
+margin-bottom: 0px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+button {
+  background-color: #007bff;
+  height: 48px;
+  color: #66BB69;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+  border-radius: 15px;
+  border: none;
+  width:40%;
+  margin-left:35%;
+}
+button:hover {
+    background-color: #A5D6A7;
+    /* Change background color on hover */
+    color: white;
+    /* Change text color on hover */
+}
+
+.image-container {
+  flex: 1 1 40%; /* Half of the container width */
+  overflow: hidden;
+  text-align: center;
+}
+.form-control{
+    width:100%;
+    border: 1.5px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    margin-bottom:24px;
+    min-width:460px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .signup-form,
+  .image-container {
+    flex: 1 1 100%; /* Full width for smaller screens */
+  }
+}
+
+</style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+            {{ include('chercheur/_form.html.twig') }}
+
+            <div class="image-container">
+            <img src="{{asset('images/signUpImage.png')}}" alt="Image">
+            </div>
+    </div>
 {% endblock %}

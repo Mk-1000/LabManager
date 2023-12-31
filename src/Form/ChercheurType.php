@@ -15,35 +15,38 @@ class ChercheurType extends AbstractType
         $builder
             ->add('nom',TextType::class,[
                 'attr'=>[
-                'class' =>'form-control inp',
+                'class' =>'form-control',
                 'id'=>'searchPublication',
                 ]
             ])
             ->add('prenom',TextType::class,[
                 'attr'=>[
-                'class' =>'form-control inp',
+                'class' =>'form-control',
                 'id'=>'searchPublication',
                 ]
             ])
             ->add('email',TextType::class,[
                 'attr'=>[
-                'class' =>'form-control inp',
+                'class' =>'form-control',
                 'id'=>'searchPublication',
                 ]
             ])
             ->add('motDePasse',TextType::class,[
                 'attr'=>[
-                'class' =>'form-control inp',
+                'class' =>'form-control',
                 'id'=>'searchPublication',
                 ]
             ])
             ->add('role',TextType::class,[
                 'attr'=>[
-                'class' =>'form-control inp',
+                'class' =>'form-control',
                 'id'=>'searchPublication',
                 ]
             ])
-        ;
+            ->setAttributes([
+                'class' => 'signup-form',
+                 // Add your desired form class here
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

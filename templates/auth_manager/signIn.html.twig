@@ -4,138 +4,149 @@
 
 {% block addSstylesheets %}
 <style>
-body {
-  margin: 0;
-}
+  body {
+    margin: 0;
+  }
 
-.container {
-  display: flex;
-  justify-content: space-between; /* Creates space between elements */
-  align-items: center; /* Centers elements vertically */
-  /* Additional styles */
-  width: 100%;
-  max-width: 800px; /* Adjust the max-width as needed */
-  margin: 100px auto; /* Centers the container horizontally */
-  gap:30px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align elements to the start of the cross axis */
+    width: 100%;
+    max-width: 900px;
+    margin: 100px auto;
+    gap: 30px;
+  }
 
-}
+  .signup-form {
+    flex: 1 1 40%;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+    border-radius: 25px;
+    width: fit-content;
+    margin-right: 30px;
+  }
 
-.signup-form {
-  flex: 1 1 40%; /* Half of the container width */
-  padding: 30px;
-  box-sizing: border-box;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
-  border-radius: 25px;
-  width:fit-content;
-  margin-right:20px;
+  .form-group {
+    margin-bottom: 70px;
+    width: 100%;
+  }
 
-}
+  .form-group:last-child {
+    margin-bottom: 0px;
+    margin-top: 90px;
+  }
 
-.form-group {
-  margin-bottom: 70px;
-  width:100%;
-   
-}
-.form-group:last-child{
-margin-bottom: 0px;
-margin-top:90px;
-}
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-input[type="email"],
-input[type="password"],
-input[type="submit"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.error {
-  color: red; /* Or any other color you prefer for error messages */
-  margin-top: 10px; /* Adjust as needed for spacing */
-  /* Other styles for error message */
-}
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
 
-button {
-  background-color: #007bff;
-  height: 48px;
-  color: #66BB69;
-  cursor: pointer;
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
-  border-radius: 15px;
-  border: none;
-  width:30%;
-  margin-left:35%;
-  margin-top:20px;
+  .signup-form button {
+    background-color: #007bff;
+    height: 48px;
+    color: #66BB69;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.6);
+    border-radius: 15px;
+    border: none;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 20px;
+  }
 
-}
-button:hover {
+  .signup-form button:hover {
     background-color: #A5D6A7;
-    /* Change background color on hover */
     color: white;
-    /* Change text color on hover */
-}
+  }
 
-.image-container {
-  max-width: 500px;
-  flex: 1 1 40%; /* Half of the container width */
-  overflow: hidden;
-  text-align: center;
-}
-.form-control{
-    width:100%;
+  .image-container {
+    max-width: 500px;
+    flex: 1 1 40%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .form-control {
+    width: 100%;
     border: 1.5px;
     border-radius: 10px;
     display: flex;
     box-shadow: 0 1px 2px rgba(228, 242, 255, 0.6);
-    margin-bottom:24px;
-}
-
-.image-container img {
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease-in-out;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
+    margin-bottom: 24px;
   }
 
-  .signup-form,
-  .image-container {
-    flex: 1 1 100%; /* Full width for smaller screens */
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
   }
-}
+
+  .signup-form a {
+    text-decoration: none;
+    width: fit-content;
+    cursor: pointer;
+  }
+
+  .signup-form p {
+    width: fit-content;
+    margin-bottom: 0px;
+    justify-items: baseline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center; /* Center elements for smaller screens */
+    }
+
+    .signup-form,
+    .image-container {
+      flex: 1 1 100%;
+    }
+  }
 </style>
+
 {% endblock %}
 {% block content %}
-<div class="container">
-
-
-
+  <div class="container">
     <form method="post" action="{{ path('app_login') }}" class="signup-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="_username" required>
-
+      <div class="form_group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="_username" required>
+        </div>
+        <div class="form_group">
         <label for="password">Password:</label>
         <input type="password" id="password" name="_password" required>
 
+        </div>
         {% if error %}
             <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
-
         <button type="submit">Sign In</button>
+                <p class="flex">Vous n'avez pas de compte ?<a href="{{path('app_chercheur_new')}}">Inscrivez-vous<a></p>
+        
     </form>
 
     <div class="image-container">
-      <img src="images\signInImage.png" alt="Image">
+      <img src="{{asset('images/signInImage.png')}}" alt="Image">
     </div>
   </div>
-
 {% endblock %}
+

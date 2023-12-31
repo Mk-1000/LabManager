@@ -86,4 +86,11 @@ class AuthManagerController extends AbstractController
         // Redirect to the home page or any desired URL after logout
         return new RedirectResponse($this->generateUrl('app_homepage'));
     }
+    #[Route('/signup', name: 'app_signup')]
+    public function signup(): Response
+    {
+        return $this->render('chercheur/new.html.twig', [
+            
+        ]);
+    }
 }
