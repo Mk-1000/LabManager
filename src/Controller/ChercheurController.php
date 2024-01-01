@@ -33,6 +33,9 @@ class ChercheurController extends AbstractController
             $entityManager->persist($chercheur);
             $entityManager->flush();
 
+            // Add a flash message to indicate success
+            $this->addFlash('success', 'Chercheur added successfully!');
+
             return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -80,6 +83,10 @@ class ChercheurController extends AbstractController
                 $chercheur->removeEquipment($equipment); // Use your Chercheur entity method to remove equipment
                 $entityManager->remove($equipment);
             }
+
+            // Add a flash message to indicate success
+            $this->addFlash('warning', 'Chercheur deleted successfully!');
+
     
             // Now delete the Chercheur entity
             $entityManager->remove($chercheur);

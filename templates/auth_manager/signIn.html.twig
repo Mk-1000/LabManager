@@ -125,6 +125,17 @@
 
 {% endblock %}
 {% block content %}
+
+{# read and display flash messages using Bootstrap classes #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
   <div class="container">
     <form method="post" action="{{ path('app_login') }}" class="signup-form">
       <div class="form_group">
